@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", "Montserrat", sans-serif;
+  text-decoration: none;
 }
 
 html {
@@ -81,10 +82,22 @@ header {
   z-index: 1000;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #022b4e;
+.navbar .logo {
+  font-family: serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: black;
+    text-decoration: none;
+}
+
+.logo a{
+  color: black;
+}
+
+.navbar .logo span {
+    display: inline-block;
+    transform: scaleX(0.9);
 }
 
 /* Desktop Nav Links */
@@ -208,7 +221,7 @@ header {
 .about-section,
 #academics,
 #skills,
-#projects,
+#works,
 .certificates-section,
 .contact-section {
   width: 100%;
@@ -223,7 +236,7 @@ header {
 .about-section h2,
 #academics h2,
 #skills h2,
-#projects h2,
+#works h2,
 .certificates-section h2 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -236,7 +249,7 @@ header {
 .about-section h2::after,
 #academics h2::after,
 #skills h2::after,
-#projects h2::after,
+#works h2::after,
 .certificates-section h2::after {
   content: "";
   display: block;
@@ -399,7 +412,7 @@ header {
 }
 
 /* Projects */
-#projects {
+#works {
   background: #f8fbfd;
 }
 
