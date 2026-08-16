@@ -6,17 +6,25 @@ const navbar = document.querySelector('.navbar');
 
 // Toggle menu
 toggle.addEventListener('click', () => {
-  navMenu.classList.toggle('show');
-  toggleIcon.classList.toggle('fa-bars');
-  toggleIcon.classList.toggle('fa-xmark');
+  const isOpen = navMenu.classList.toggle('show');
+
+  toggleIcon.classList.toggle('fa-bars', !isOpen);
+  toggleIcon.classList.toggle('fa-xmark', isOpen);
+
+  // Prevent background scrolling
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
-// Close menu on link click
+// Close menu when a link is clicked
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('show');
+
     toggleIcon.classList.add('fa-bars');
     toggleIcon.classList.remove('fa-xmark');
+
+    // Restore scrolling
+    document.body.style.overflow = '';
   });
 });
 
