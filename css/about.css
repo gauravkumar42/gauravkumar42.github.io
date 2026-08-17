@@ -1,198 +1,390 @@
 /* =========================================
-   ABOUT SECTION (combined: intro + academics + skills + certificates)
+   ABOUT SECTION — redesigned
+   Theme: developer's own tools (editor window,
+   git commit graph, JSON object) rather than
+   generic portfolio boilerplate.
 ========================================= */
 
 .about-section {
-  background: linear-gradient(to right, #f8fbfd, #eef2f3);
+  --navy: #0a2540;
+  --navy-soft: #1c3a5c;
+  --bg-soft: #f4f8fb;
+  --panel: #ffffff;
+  --border: #dbe4ea;
+  --text: #1c2b36;
+  --text-muted: #5b6b76;
+  --cyan: #1aa8c9;
+  --cyan-soft: rgba(26, 168, 201, 0.14);
+  --amber: #e2894f;
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  background: linear-gradient(180deg, var(--bg-soft) 0%, #eef3f6 100%);
+  color: var(--text);
+  font-family: var(--font-body);
+  padding: 5rem 1.5rem 6rem;
 }
 
 .about-section h2 {
-  font-size: 1.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 600;
   text-align: center;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+.about-section h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin: 0.9rem auto 0;
+  background: var(--cyan);
+  border-radius: 2px;
+}
+
+/* eyebrow — a "comment line" above each block, in the developer's own voice */
+.about-eyebrow {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--cyan);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
 }
 
 .about-section h3 {
-  font-size: 1.4rem;
-  color: #022b4e;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.2rem;
 }
 
-/* spacing between the intro / academics / skills / certificates blocks */
 .about-block {
-  max-width: 1100px;
-  margin: 4rem auto 0;
+  max-width: 1080px;
+  margin: 5.5rem auto 0;
 }
 
 /* ---------- Intro ---------- */
 .about-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 3rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  gap: 3.5rem;
+  max-width: 1080px;
+  margin: 3rem auto 0;
   flex-wrap: wrap;
 }
 
-.about-img img {
+/* the photo lives inside a small "editor window" */
+.editor-frame {
   width: 280px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 40px -12px rgba(10, 37, 64, 0.25);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.about-img img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+.editor-frame:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px -12px rgba(10, 37, 64, 0.32);
 }
 
+.editor-frame .editor-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--navy);
+}
+
+.editor-frame .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.editor-frame .editor-filename {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #9db3c6;
+}
+
+.editor-frame img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* the text panel reads like a JS object literal, then plain prose */
 .about-text {
-  max-width: 600px;
+  max-width: 560px;
   text-align: left;
-  font-size: 1.1rem;
+}
+
+.about-object {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  background: var(--navy);
+  color: #d7e6f0;
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.6rem;
+  overflow-x: auto;
+}
+
+.about-object .kw { color: #7fb8ff; }
+.about-object .key { color: #9db3c6; }
+.about-object .str { color: var(--amber); }
+.about-object .punc { color: #5b7791; }
+
+.about-text p {
+  font-size: 1.02rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }
 
 .about-text .highlight {
-  color: #5ad4f8;
+  color: var(--navy);
   font-weight: 600;
+  background: var(--cyan-soft);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
 }
 
-/* ---------- Academics ---------- */
-.timeline {
+/* ---------- Academics: git commit graph ---------- */
+.commit-graph {
   position: relative;
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
-  padding-left: 20px;
-  border-left: 3px solid #5ad4f8;
+  padding-left: 2.2rem;
 }
 
-.timeline li {
-  position: relative;
-  margin-bottom: 2rem;
-  padding: 1rem 1.5rem;
-  background: #eef2f3;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.timeline li:hover {
-  transform: translateX(10px);
-}
-
-.timeline li::before {
+.commit-graph::before {
   content: "";
   position: absolute;
-  left: -32px;
-  top: 1.2rem;
-  width: 16px;
-  height: 16px;
-  background: #5ad4f8;
-  border: 3px solid #fff;
+  left: 9px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--cyan) 0,
+    var(--cyan) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.commit {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.commit:last-child {
+  margin-bottom: 0;
+}
+
+.commit-node {
+  position: absolute;
+  left: -2.2rem;
+  top: 0.35rem;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(90, 212, 248, 0.4);
+  background: var(--panel);
+  border: 3px solid var(--cyan);
+  box-shadow: 0 0 0 4px var(--bg-soft);
 }
 
-.timeline h4 {
-  font-size: 1.2rem;
-  color: #022b4e;
-  margin-bottom: 0.5rem;
+.commit.is-current .commit-node {
+  background: var(--cyan);
 }
 
-.timeline span {
-  font-size: 0.95rem;
-  color: #555;
+.commit-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 6px 16px rgba(10, 37, 64, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.commit-card:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 22px rgba(10, 37, 64, 0.1);
+}
+
+.commit-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+
+.commit-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.commit-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.commit-card span {
+  font-size: 0.92rem;
+  color: var(--text-muted);
   display: block;
 }
 
-/* ---------- Skills ---------- */
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
+/* ---------- Skills: rendered like a JSON object ---------- */
+.skills-json {
+  max-width: 760px;
   margin: 0 auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 10px 24px rgba(10, 37, 64, 0.08);
+  font-family: var(--font-mono);
 }
 
-.skill-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  text-align: center;
-  cursor: pointer;
+.skills-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px dashed var(--border);
 }
 
-.skill-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(90, 212, 248, 0.4);
+.skills-row:last-child {
+  border-bottom: none;
 }
 
-.skill-card i {
-  font-size: 2.2rem;
-  color: #5ad4f8;
-  margin-bottom: 1rem;
-  display: inline-block;
-}
-
-.skill-card h4 {
-  margin-bottom: 0.8rem;
-  color: #022b4e;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.skill-card p {
+.skills-key {
+  color: var(--navy-soft);
   font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
+  font-weight: 600;
+  min-width: 150px;
+}
+
+.skills-key::after {
+  content: ":";
+  color: var(--text-muted);
+}
+
+.skills-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-pill {
+  font-size: 0.85rem;
+  color: var(--navy);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.skill-pill:hover {
+  background: var(--cyan-soft);
+  border-color: var(--cyan);
+  transform: translateY(-2px);
 }
 
 /* ---------- Certificates ---------- */
 .certificates-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.8rem;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 .certificate-card {
   position: relative;
-  background: #fff;
-  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(10, 37, 64, 0.07);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .certificate-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(90, 212, 248, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(10, 37, 64, 0.15);
+}
+
+.cert-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.9rem;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.cert-tab span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.cert-tab .cert-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
 }
 
 .certificate-card img {
   width: 100%;
-  max-height: 200px;
+  height: 180px;
   object-fit: contain;
   background: #fff;
-  border-radius: 10px;
+  padding: 1rem;
   display: block;
 }
 
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(2, 43, 78, 0.85);
+  top: 33px; /* leave the tab visible */
+  background: rgba(10, 37, 64, 0.92);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -200,7 +392,7 @@
   justify-content: center;
   padding: 1.5rem;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
   text-align: center;
 }
 
@@ -209,13 +401,58 @@
 }
 
 .card-overlay h4 {
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .card-overlay p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin: 0;
-  color: #d3ef4a;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .about-text {
+    text-align: left;
+  }
+
+  .skills-key {
+    min-width: 100%;
+  }
+
+  .commit-graph {
+    padding-left: 1.8rem;
+  }
+
+  .commit-node {
+    left: -1.8rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .editor-frame,
+  .commit-card,
+  .skill-pill,
+  .certificate-card,
+  .card-overlay {
+    transition: none !important;
+  }
+
+  .editor-frame:hover,
+  .commit-card:hover,
+  .skill-pill:hover,
+  .certificate-card:hover {
+    transform: none !important;
+  }
 }
