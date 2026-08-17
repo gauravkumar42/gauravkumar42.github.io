@@ -1,17 +1,3 @@
-/* =========================================
-   ABOUT SECTION — redesigned
-   Theme: developer's own tools (editor window,
-   git commit graph, JSON object) rather than
-   generic portfolio boilerplate.
-
-   Responsive strategy: fluid type/spacing via
-   clamp() everywhere so most sizes scale
-   continuously between breakpoints, with a few
-   structural breakpoints (1024 / 700 / 480 / 360)
-   for layout changes clamp() can't do (stacking,
-   min-width removal, hiding decorative elements).
-========================================= */
-
 *,
 *::before,
 *::after {
