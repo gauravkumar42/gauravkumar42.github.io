@@ -50,7 +50,15 @@
     />
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/sections-common.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
   </head>
   
   <body>
@@ -60,11 +68,8 @@
 
         <div class="logo"><a href="#hero">G<span>Λ</span>UR<span>Λ</span>V</a></div>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#academics">Academics</a></li>
-          <li><a href="#skills">Skills</a></li>
           <li><a href="#works" class="active">Work</a></li>
-          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
             <a
@@ -108,80 +113,120 @@
       </div>
     </section>
 
+
     <!-- About Section -->
-    <section id="about" class="about-section">
-      <h2 class="reveal fade-right">About Me</h2>
-      <div class="about-container">
-        <div class="about-img">
-          <img
-            class="reveal fade-left"
-            src="./assets/about-photo.jpg"
-            alt="Gaurav Kumar"
-          />
-        </div>
-        <div class="about-text reveal fade-right">
-          <p>
-            I’m <strong>Gaurav Kumar</strong>, a final-year B.Tech IT
-            Engineering student at
-            <strong>Ajay Kumar Garg Engineering College, Ghaziabad</strong>.
-          </p>
-          <p>
-            With a strong foundation in
-            <span class="highlight">web development</span> and
-            <span class="highlight">problem-solving</span>, I’m passionate about
-            building modern, responsive, and scalable applications.
-          </p>
-          <p>
-            I love working on projects that challenge me to learn and grow as a
-            developer.
-          </p>
+<section id="about" class="about-section">
+  <h2 class="reveal fade-right">About Me</h2>
+
+  <!-- Intro -->
+  <div class="about-container">
+    <div class="about-img">
+      <img
+        class="reveal fade-left"
+        src="./assets/about-photo.jpg"
+        alt="Gaurav Kumar"
+      />
+    </div>
+    <div class="about-text reveal fade-right">
+      <p>
+        I’m <strong>Gaurav Kumar</strong>, a final-year B.Tech IT
+        Engineering student at
+        <strong>Ajay Kumar Garg Engineering College, Ghaziabad</strong>.
+      </p>
+      <p>
+        With a strong foundation in
+        <span class="highlight">web development</span> and
+        <span class="highlight">problem-solving</span>, I’m passionate about
+        building modern, responsive, and scalable applications.
+      </p>
+      <p>
+        I love working on projects that challenge me to learn and grow as a
+        developer.
+      </p>
+    </div>
+  </div>
+
+  <!-- Academics -->
+  <div class="about-block">
+    <h3 class="reveal fade-left">Academic Details</h3>
+    <ul class="timeline">
+      <li class="reveal fade-right">
+        <h4>B.Tech (IT Engineering)</h4>
+        <span>2023–2026 | AKGEC, Ghaziabad | Pursuing</span>
+      </li>
+      <li class="reveal fade-right">
+        <h4>Diploma (BTEUP)</h4>
+        <span>2022 | Govt. Polytechnic Ghaziabad | 72.74%</span>
+      </li>
+      <li class="reveal fade-right">
+        <h4>Class X (UP Board)</h4>
+        <span>2017 | Sri Ram Singh I C Kaimganj Farrukhabad | 72.16%</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Skills -->
+  <div class="about-block">
+    <h3 class="reveal fade-left">Skills</h3>
+    <div class="skills-container">
+      <div class="skill-card reveal zoom">
+        <h4>Programming Languages</h4>
+        <p>JavaScript, Python</p>
+      </div>
+      <div class="skill-card reveal zoom">
+        <h4>Web Development</h4>
+        <p>HTML5, CSS3, Bootstrap, React, MySQL</p>
+      </div>
+      <div class="skill-card reveal zoom">
+        <h4>Tools & Platforms</h4>
+        <p>Git, GitHub, VS Code</p>
+      </div>
+      <div class="skill-card reveal zoom">
+        <h4>Soft Skills</h4>
+        <p>
+          Problem-Solving, Team Collaboration, Communication, Adaptability
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificates -->
+  <div class="about-block">
+    <h3 class="reveal fade-left">Certificates</h3>
+    <div class="certificates-container">
+      <!-- Card 1 -->
+      <div class="certificate-card reveal zoom">
+        <img
+          src="./assets/web_dev_cert.png"
+          alt="Full Stack Web Development Certificate"
+        />
+        <div class="card-overlay">
+          <h4>Full Stack Web Development</h4>
+          <p>Apna College – MERN Stack</p>
         </div>
       </div>
-    </section>
 
-    <!-- Academics Section  -->
-    <section id="academics" class="section-container reveal">
-      <h2 class="reveal fade-left">Academic Details</h2>
-      <ul class="timeline">
-        <li class="reveal fade-right">
-          <h3>B.Tech (IT Engineering)</h3>
-          <span>2023–2026 | AKGEC, Ghaziabad | Pursuing</span>
-        </li>
-        <li class="reveal fade-right">
-          <h3>Diploma (BTEUP)</h3>
-          <span>2022 | Govt. Polytechnic Ghaziabad | 72.74%</span>
-        </li>
-        <li class="reveal fade-right">
-          <h3>Class X (UP Board)</h3>
-          <span>2017 | Sri Ram Singh I C Kaimganj Farrukhabad | 72.16%</span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Skills Section  -->
-    <section id="skills" class="section-container reveal">
-      <h2 class="reveal fade-left">Skills</h2>
-      <div class="skills-container">
-        <div class="skill-card reveal zoom">
-          <h4>Programming Languages</h4>
-          <p>JavaScript, Python</p>
-        </div>
-        <div class="skill-card reveal zoom">
-          <h4>Web Development</h4>
-          <p>HTML5, CSS3, Bootstrap, React, MySQL</p>
-        </div>
-        <div class="skill-card reveal zoom">
-          <h4>Tools & Platforms</h4>
-          <p>Git, GitHub, VS Code</p>
-        </div>
-        <div class="skill-card reveal zoom">
-          <h4>Soft Skills</h4>
-          <p>
-            Problem-Solving, Team Collaboration, Communication, Adaptability
-          </p>
+      <!-- Card 2 -->
+      <div class="certificate-card reveal zoom">
+        <img src="./assets/dsa-java.jpg" alt="DSA using Java" />
+        <div class="card-overlay">
+          <h4>DSA using Java</h4>
+          <p>Infosys SpringBoard</p>
         </div>
       </div>
-    </section>
+
+      <!-- Card 3 -->
+      <div class="certificate-card reveal zoom">
+        <img src="./assets/java_prog.jpg" alt="Java Programming" />
+        <div class="card-overlay">
+          <h4>Java Programming</h4>
+          <p>Infosys SpringBoard</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Projects Section  -->
     <section id="works" class="section-container">
@@ -222,42 +267,6 @@
             UI.
             <a href="https://gauravkumar42.me/" target="_blank">View Project</a>
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates-section">
-      <h2 class="reveal fade-left">Certificates</h2>
-      <div class="certificates-container">
-        <!-- Card 1 -->
-        <div class="certificate-card reveal zoom">
-          <img
-            src="./assets/web_dev_cert.png"
-            alt="Full Stack Web Development Certificate"
-          />
-          <div class="card-overlay">
-            <h3>Full Stack Web Development</h3>
-            <p>Apna College – MERN Stack</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="certificate-card reveal zoom">
-          <img src="./assets/dsa-java.jpg" alt="DSA using Java" />
-          <div class="card-overlay">
-            <h3>DSA using Java</h3>
-            <p>Infosys SpringBoard</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="certificate-card reveal zoom">
-          <img src="./assets/java_prog.jpg" alt="Java Programming" />
-          <div class="card-overlay">
-            <h3>Java Programming</h3>
-            <p>Infosys SpringBoard</p>
-          </div>
         </div>
       </div>
     </section>

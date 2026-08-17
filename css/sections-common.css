@@ -1,0 +1,62 @@
+/* =========================================
+   SHARED FULL-WIDTH SECTION STYLING
+   (used by About, Academics, Skills, Works,
+   Certificates, Contact)
+========================================= */
+
+.section-container,
+.about-section,
+#academics,
+#skills,
+#works,
+.certificates-section,
+.contact-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+/* Section Headings */
+.section-container h2,
+.about-section h2,
+#academics h2,
+#skills h2,
+#works h2,
+.certificates-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #022b4e;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-container h2::after,
+.about-section h2::after,
+#academics h2::after,
+#skills h2::after,
+#works h2::after,
+.certificates-section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #5ad4f8;
+  margin: 0.01rem auto 0;
+  border-radius: 2px;
+}
+
+.section-container p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
