@@ -3,7 +3,20 @@
    Theme: developer's own tools (editor window,
    git commit graph, JSON object) rather than
    generic portfolio boilerplate.
+
+   Responsive strategy: fluid type/spacing via
+   clamp() everywhere so most sizes scale
+   continuously between breakpoints, with a few
+   structural breakpoints (1024 / 700 / 480 / 360)
+   for layout changes clamp() can't do (stacking,
+   min-width removal, hiding decorative elements).
 ========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 .about-section {
   --navy: #0a2540;
@@ -23,16 +36,20 @@
   background: linear-gradient(180deg, var(--bg-soft) 0%, #eef3f6 100%);
   color: var(--text);
   font-family: var(--font-body);
-  padding: 5rem 1.5rem 6rem;
+  padding: clamp(2.75rem, 8vw, 5rem) clamp(1rem, 4vw, 1.5rem) clamp(3.5rem, 10vw, 6rem);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .about-section h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
   font-weight: 600;
   text-align: center;
   color: var(--navy);
   letter-spacing: -0.02em;
+  line-height: 1.2;
+  word-break: break-word;
 }
 
 .about-section h2::after {
@@ -50,24 +67,27 @@
   display: block;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
   color: var(--cyan);
   margin-bottom: 0.6rem;
   letter-spacing: 0.02em;
+  padding: 0 1rem;
 }
 
 .about-section h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   font-weight: 600;
   color: var(--navy);
   text-align: center;
-  margin-bottom: 2.2rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.2rem);
+  padding: 0 1rem;
 }
 
 .about-block {
   max-width: 1080px;
-  margin: 5.5rem auto 0;
+  margin: clamp(3rem, 8vw, 5.5rem) auto 0;
+  width: 100%;
 }
 
 /* ---------- Intro ---------- */
@@ -75,21 +95,24 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 3.5rem;
+  gap: clamp(2rem, 5vw, 3.5rem);
   max-width: 1080px;
-  margin: 3rem auto 0;
+  margin: clamp(2rem, 6vw, 3rem) auto 0;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 /* the photo lives inside a small "editor window" */
 .editor-frame {
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   border-radius: 12px;
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--border);
   box-shadow: 0 20px 40px -12px rgba(10, 37, 64, 0.25);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  flex-shrink: 0;
 }
 
 .editor-frame:hover {
@@ -125,26 +148,30 @@
 .editor-frame img {
   display: block;
   width: 100%;
-  height: 320px;
+  height: clamp(220px, 40vw, 320px);
   object-fit: cover;
 }
 
 /* the text panel reads like a JS object literal, then plain prose */
 .about-text {
+  width: 100%;
   max-width: 560px;
   text-align: left;
+  min-width: 0;
 }
 
 .about-object {
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: clamp(0.78rem, 2vw, 0.92rem);
   line-height: 1.9;
   background: var(--navy);
   color: #d7e6f0;
   border-radius: 10px;
-  padding: 1.4rem 1.6rem;
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 3vw, 1.6rem);
   margin-bottom: 1.6rem;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .about-object .kw { color: #7fb8ff; }
@@ -153,7 +180,7 @@
 .about-object .punc { color: #5b7791; }
 
 .about-text p {
-  font-size: 1.02rem;
+  font-size: clamp(0.92rem, 2.2vw, 1.02rem);
   line-height: 1.8;
   color: var(--text-muted);
   margin-bottom: 1rem;
@@ -172,13 +199,15 @@
   position: relative;
   max-width: 760px;
   margin: 0 auto;
-  padding-left: 2.2rem;
+  padding-left: clamp(1.5rem, 5vw, 2.2rem);
+  padding-right: 0.25rem;
+  width: 100%;
 }
 
 .commit-graph::before {
   content: "";
   position: absolute;
-  left: 9px;
+  left: clamp(6px, 2vw, 9px);
   top: 6px;
   bottom: 6px;
   width: 2px;
@@ -202,10 +231,10 @@
 
 .commit-node {
   position: absolute;
-  left: -2.2rem;
+  left: clamp(-2.2rem, -5vw, -1.5rem);
   top: 0.35rem;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--panel);
   border: 3px solid var(--cyan);
@@ -220,9 +249,10 @@
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 1.2rem 1.5rem;
+  padding: clamp(0.9rem, 3vw, 1.2rem) clamp(1rem, 3.5vw, 1.5rem);
   box-shadow: 0 6px 16px rgba(10, 37, 64, 0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  max-width: 100%;
 }
 
 .commit-card:hover {
@@ -234,21 +264,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.6rem 1rem;
   flex-wrap: wrap;
   margin-bottom: 0.3rem;
 }
 
 .commit-card h4 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(0.98rem, 2.8vw, 1.1rem);
   font-weight: 600;
   color: var(--navy);
 }
 
 .commit-tag {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.68rem, 2vw, 0.75rem);
   color: var(--cyan);
   background: var(--cyan-soft);
   padding: 0.15rem 0.55rem;
@@ -257,7 +287,7 @@
 }
 
 .commit-card span {
-  font-size: 0.92rem;
+  font-size: clamp(0.85rem, 2.2vw, 0.92rem);
   color: var(--text-muted);
   display: block;
 }
@@ -265,11 +295,12 @@
 /* ---------- Skills: rendered like a JSON object ---------- */
 .skills-json {
   max-width: 760px;
+  width: 100%;
   margin: 0 auto;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 2rem 2.2rem;
+  padding: clamp(1.2rem, 4vw, 2rem) clamp(1.1rem, 4vw, 2.2rem);
   box-shadow: 0 10px 24px rgba(10, 37, 64, 0.08);
   font-family: var(--font-mono);
 }
@@ -278,7 +309,7 @@
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.4rem 0.6rem;
   padding: 0.7rem 0;
   border-bottom: 1px dashed var(--border);
 }
@@ -289,9 +320,10 @@
 
 .skills-key {
   color: var(--navy-soft);
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2.3vw, 0.95rem);
   font-weight: 600;
-  min-width: 150px;
+  min-width: 130px;
+  flex-shrink: 0;
 }
 
 .skills-key::after {
@@ -303,16 +335,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  min-width: 0;
 }
 
 .skill-pill {
-  font-size: 0.85rem;
+  font-size: clamp(0.76rem, 2vw, 0.85rem);
   color: var(--navy);
   background: var(--bg-soft);
   border: 1px solid var(--border);
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.65rem;
   border-radius: 6px;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
 }
 
 .skill-pill:hover {
@@ -324,10 +358,11 @@
 /* ---------- Certificates ---------- */
 .certificates-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(1rem, 3vw, 1.8rem);
   max-width: 1080px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .certificate-card {
@@ -357,26 +392,31 @@
 
 .cert-tab span {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: clamp(0.65rem, 2vw, 0.72rem);
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cert-tab .cert-badge {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1.8vw, 0.68rem);
   font-weight: 600;
   color: var(--cyan);
   background: var(--cyan-soft);
   padding: 0.1rem 0.5rem;
   border-radius: 4px;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .certificate-card img {
   width: 100%;
-  height: 180px;
+  height: clamp(140px, 28vw, 180px);
   object-fit: contain;
   background: #fff;
-  padding: 1rem;
+  padding: clamp(0.6rem, 2vw, 1rem);
   display: block;
 }
 
@@ -415,27 +455,125 @@
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 720px) {
+
+/* Tablet and below: intro stacks, photo centers above text */
+@media (max-width: 900px) {
   .about-container {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    text-align: center;
+  }
+
+  .editor-frame {
+    max-width: 260px;
   }
 
   .about-text {
     text-align: left;
   }
+}
+
+/* Small tablet / large phone: keys stack above their value pills */
+@media (max-width: 700px) {
+  .skills-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.85rem 0;
+  }
 
   .skills-key {
-    min-width: 100%;
+    min-width: 0;
   }
 
   .commit-graph {
-    padding-left: 1.8rem;
+    padding-left: 1.6rem;
   }
 
   .commit-node {
-    left: -1.8rem;
+    left: -1.6rem;
+    width: 14px;
+    height: 14px;
+  }
+
+  .commit-card:hover {
+    transform: none; /* horizontal shift feels cramped once the graph itself is narrow */
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .about-block {
+    margin-top: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .editor-frame {
+    max-width: 220px;
+  }
+
+  .editor-frame .editor-filename {
+    font-size: 0.62rem;
+  }
+
+  .about-object {
+    padding: 1rem 1.1rem;
+    white-space: pre-wrap; /* let the object literal wrap instead of scrolling on narrow phones */
+    word-break: break-word;
+  }
+
+  .commit-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .certificates-container {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+  }
+
+  .certificate-card:hover {
+    transform: none; /* avoid layout jump on tap-to-hover touch devices */
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .about-section {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .commit-graph {
+    padding-left: 1.3rem;
+  }
+
+  .commit-node {
+    left: -1.3rem;
+  }
+
+  .skills-json {
+    padding: 1rem 0.9rem;
+  }
+}
+
+/* Touch devices: hover-only affordances (card lift, pill lift) get dropped
+   since there's no hover state to trigger them meaningfully */
+@media (hover: none) {
+  .editor-frame:hover,
+  .commit-card:hover,
+  .skill-pill:hover,
+  .certificate-card:hover {
+    transform: none;
+  }
+}
+
+/* Large desktop: a little extra breathing room */
+@media (min-width: 1400px) {
+  .about-block,
+  .about-container {
+    max-width: 1200px;
   }
 }
 
