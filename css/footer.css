@@ -1,0 +1,38 @@
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  background: #022b4e;
+  color: #eef2f3;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 1rem;
+  margin-top: 2rem;
+  border-top: 3px solid #d3ef4a;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+footer i.fa-heart {
+  color: #e63946;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+footer i.fa-heart:hover {
+  color: #5ad4f8;
+  transform: scale(1.3);
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  footer {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+}

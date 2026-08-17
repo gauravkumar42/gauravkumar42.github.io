@@ -1,0 +1,64 @@
+/* =========================================
+   PROJECTS SECTION
+========================================= */
+
+#works {
+  background: #f8fbfd;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(90, 212, 248, 0.3);
+}
+
+.project-card h3 {
+  color: #022b4e;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.project-card span {
+  font-size: 0.9rem;
+  color: #5ad4f8;
+  font-weight: 500;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.project-card a {
+  color: #5ad4f8;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.project-card a:hover {
+  color: #022b4e;
+}
