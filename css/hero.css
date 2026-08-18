@@ -3,6 +3,7 @@
 ========================================= */
 
 #hero {
+  position: relative;
   padding-top: 6rem;
   background: #eef2f3;
 }
@@ -46,11 +47,22 @@
   text-align: justify;
 }
 
-.hero-text .line {
+/* Line now animates its width in via scaleX instead of being present instantly.
+   This selector is more specific than the base .reveal rule, so it overrides it. */
+.hero-text .line.reveal {
   height: 3px;
   width: 100%;
   background: linear-gradient(to right, #d3ef4a, transparent);
   border-radius: 2px;
+
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.hero-text .line.reveal.active {
+  transform: scaleX(1);
 }
 
 .hero-img img {
@@ -64,6 +76,108 @@
 
 .hero-img img:hover {
   transform: scale(1.05);
+}
+
+/* =========================================
+   HERO ACTIONS (Socials + Divider + Resume)
+========================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.hero-socials {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.hero-socials a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #022b4e;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.hero-socials a:hover {
+  background: #5ad4f8;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Thin divider tying the socials and resume button into one composed row */
+.hero-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(2, 43, 78, 0.15);
+}
+
+.resume-btn {
+  background: #5ad4f8;
+  color: #fff;
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 8px rgba(90, 212, 248, 0.18);
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: #022b4e;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(2, 43, 78, 0.25);
+}
+
+/* =========================================
+   SCROLL CUE
+========================================= */
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: #87a9a8;
+  font-size: 0.8rem;
+
+  animation: cueBounce 2.2s ease-in-out infinite;
+}
+
+.scroll-cue span {
+  width: 1px;
+  height: 24px;
+  background: rgba(2, 43, 78, 0.2);
+}
+
+.scroll-cue i {
+  font-size: 0.85rem;
+}
+
+@keyframes cueBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+    opacity: 1;
+  }
 }
 
 /* =========================================
@@ -105,6 +219,15 @@
   .hero-img img {
     height: 15rem;
     width: 15rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  /* Scroll cue gets crowded next to the mobile bottom tab bar — hide it there */
+  .scroll-cue {
+    display: none;
   }
 }
 

@@ -1,4 +1,28 @@
 /* =========================================
+   DESIGN TOKENS
+========================================= */
+
+:root {
+  /* Colors */
+  --color-primary: #022b4e;
+  --color-accent: #5ad4f8;
+  --color-highlight: #d3ef4a;
+  --color-text: #111;
+  --color-text-muted: #444;
+  --color-bg: #ffffff;
+  --color-bg-soft: #eef2f3;
+
+  /* Typography */
+  --font-main: "Poppins", "Montserrat", "sans-serif";
+  --font-heading: "Quicksand", sans-serif;
+
+  /* Motion */
+  --transition-fast: 0.25s ease;
+  --transition-base: 0.35s ease;
+  --transition-slow: 0.8s ease-out;
+}
+
+/* =========================================
    BASE / RESET
 ========================================= */
 
@@ -6,8 +30,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", "Montserrat", sans-serif;
-  text-decoration: none;
+  font-family: var(--font-main);
 }
 
 html {
@@ -15,15 +38,72 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: #111;
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Lists */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Media defaults */
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form element inheritance */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Headings don't inherit bold weight oddly across browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+/* Keyboard accessibility — visible focus, no ugly default on mouse click */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* Selection Styling */
 ::selection {
-  background: #d3ef4a;
-  color: #022b4e;
+  background: var(--color-highlight);
+  color: var(--color-primary);
 }
 
 /* =========================================
@@ -34,7 +114,7 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .reveal.active {
@@ -61,4 +141,21 @@ body {
 }
 .reveal.zoom.active {
   transform: scale(1);
+}
+
+/* Respect users who've asked for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.active,
+  .reveal.fade-left,
+  .reveal.fade-right,
+  .reveal.zoom {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
