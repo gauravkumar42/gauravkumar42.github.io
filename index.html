@@ -61,102 +61,127 @@
   </head>
 
   <body>
-    <!-- Header -->
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-          <a href="#hero">G<span>Λ</span>UR<span>Λ</span>V</a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#works" class="active">Work</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li>
-            <a
-              href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
-              target="_blank"
-              class="resume-btn"
-              >Resume</a
-            >
-          </li>
-        </ul>
 
-        <div class="menu-toggle">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-      </nav>
-    </header>
+  <div id="header-root"></div>
+  <script src="js/header.js"></script>
 
     <!-- Hero Section -->
-    <section id="hero">
-      <div class="hero-container">
-        <div class="hero-text reveal fade-left">
-          <h3>Hello, I'm</h3>
-          <h1>Gaurav Kumar</h1>
-          <p>
-            I’m a final-year B.Tech student and aspiring Full Stack Developer.
-            <br />
-            I enjoy building modern, responsive, and scalable applications.
-            <br />
-            This portfolio highlights my skills, projects, and passion for
-            technology.
-          </p>
-          <div class="line"></div>
-        </div>
-        <div class="hero-img">
-          <img
-            class="reveal fade-right"
-            src="./assets/img1.jpg"
-            alt="Portrait of Gaurav Kumar"
-          />
-        </div>
-      </div>
-    </section>
+<section id="hero">
+  <div class="hero-container">
+    <div class="hero-text reveal fade-left">
+      <h3>Hello, I'm</h3>
+      <h1>Gaurav Kumar</h1>
+      <p>
+        A React developer who loves turning messy problems into clean, fast interfaces. <br> I focus on building responsive, accessible experiences with clean architecture, reusable components, and attention to the details that make the web feel effortless.
 
-    <!-- Projects Section  -->
-    <section id="works" class="section-container">
-      <h2 class="reveal fade-right">Selected Work</h2>
-      <div class="projects-container">
-        <div class="project-card reveal zoom">
-          <h3>
-            BudgetWise – AI Personal Finance Tracker
-            <span>(Apr 2026)</span>
-          </h3>
-          <p>
-            Built a React-based personal finance tracker with expense tracking,
-            interactive dashboards, analytics, and AI-powered budgeting
-            recommendations.
-            <br />
-            <a
-              href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
-              target="_blank"
-            >
-              View Project
-            </a>
-          </p>
-        </div>
+      </p>
+      <div class="line reveal"></div>
 
-        <div class="project-card reveal zoom">
-          <h3>Simon Says Game <span>(June 2026)</span></h3>
-          <p>
-            Interactive memory game built with HTML, CSS, and JavaScript
-            featuring dynamic levels, keyboard interaction, and score tracking.
-          </p>
-          <a href="https://gauravkumar42.me/simon-says-game/" target="_blank">
-            View Project
+      <div class="hero-actions">
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/gauravkumar42" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
           </a>
         </div>
 
-        <div class="project-card reveal zoom">
-          <h3>Personal Portfolio Website <span>(Feb 2026)</span></h3>
-          <p>
-            Responsive personal portfolio with smooth animations and interactive
-            UI.
-            <a href="https://gauravkumar42.me/" target="_blank">View Project</a>
-          </p>
-        </div>
+        <span class="hero-divider" aria-hidden="true"></span>
+
+        <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
+          target="_blank"
+          class="resume-btn">
+
+          View Resume <i class="fa-solid fa-arrow-up-right"></i>
+        </a>
       </div>
-    </section>
+    </div>
+
+    <div class="hero-img">
+      <img class="reveal fade-right" src="./assets/img1.jpg" alt="Portrait of Gaurav Kumar" />
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span></span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+
+    <!-- Projects Section  -->
+<section id="works" class="section-container">
+  <h2 class="reveal fade-right">Selected Work</h2>
+  <div class="projects-container">
+
+    <div class="project-card reveal zoom">
+      <div class="project-index">01</div>
+      <h3>
+        BudgetWise – AI Personal Finance Tracker
+        <span>(Apr 2026)</span>
+      </h3>
+      <p>
+        Built a React-based personal finance tracker with expense tracking,
+        interactive dashboards, analytics, and AI-powered budgeting
+        recommendations.
+      </p>
+      <div class="project-tags">
+        <span>React.js</span>
+        <span>Node.js</span>
+        <span>MongoDB</span>
+        <span>Rest APIs</span>
+        <span>AI</span>
+
+      </div>
+      
+        <a href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
+        target="_blank"
+        class="project-link">
+        View Project <i class="fa-solid fa-arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="project-card reveal zoom">
+      <div class="project-index">02</div>
+      <h3>Simon Says Game <span>(June 2026)</span></h3>
+      <p>
+        Interactive memory game built with HTML, CSS, and JavaScript
+        featuring dynamic levels, keyboard interaction, and score tracking.
+      </p>
+      <div class="project-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Game Logic</span>
+      </div>
+      
+      <a href="https://gauravkumar42.me/simon-says-game/" target="_blank" class="project-link">
+        View Project <i class="fa-solid fa-arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="project-card reveal zoom">
+      <div class="project-index">03</div>
+      <h3>Personal Portfolio Website <span>(Feb 2026)</span></h3>
+      <p>
+        Responsive personal portfolio with smooth animations and interactive
+        UI.
+      </p>
+      <div class="project-tags">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>Responsive</span>
+      </div>
+      
+      <a href="https://gauravkumar42.me/" target="_blank" class="project-link">
+        View Project <i class="fa-solid fa-arrow-up-right"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- Contact Section  -->
     <section id="contact" class="contact-section reveal">
@@ -165,8 +190,8 @@
         <div class="contact-info reveal fade-left">
           <h2>Say Hello 👋</h2>
           <p>
-            I’m still learning and building my skills, so if you have
-            suggestions, feedback, or just want to say hello I’d love to hear
+            I'm still learning and building my skills, so if you have
+            suggestions, feedback, or just want to say hello I'd love to hear
             from you!
           </p>
 
@@ -208,11 +233,6 @@
         </form>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>Made with <i class="fa-solid fa-heart"></i> by Gaurav Kumar</p>
-    </footer>
 
     <!-- JS -->
     <script src="app.js"></script>
