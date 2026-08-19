@@ -3,6 +3,7 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
 const cors = require("cors");
+const { Resend } = require("resend");
 require("dotenv").config();
 
 
@@ -30,6 +31,11 @@ const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 });
+
+
+//------ RESEND EMAIL -----
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 
 //------ TEST ROUTE -----
@@ -77,10 +83,44 @@ app.post("/api/contact", async (req, res) => {
       });
     }
 
+
+    //------ SAVE MESSAGE TO MYSQL -----
+
     await db.execute(
       "INSERT INTO messages (name, email, message) VALUES (?, ?, ?)",
       [name, email, message]
     );
+
+
+    //------ SEND EMAIL NOTIFICATION -----
+
+    try {
+      await resend.emails.send({
+        from: "Portfolio <onboarding@resend.dev>",
+        to: "gauravkumar95692@gmail.com",
+        replyTo: email,
+        subject: `New portfolio message from ${name}`,
+        html: `
+          <h2>New Portfolio Contact</h2>
+
+          <p><strong>Name:</strong> ${name}</p>
+
+          <p><strong>Email:</strong> ${email}</p>
+
+          <p><strong>Message:</strong></p>
+
+          <p>${message}</p>
+        `,
+      });
+
+      console.log("Email notification sent successfully.");
+
+    } catch (emailError) {
+      console.error("Email notification failed:", emailError);
+    }
+
+
+    //------ SUCCESS RESPONSE -----
 
     res.status(201).json({
       success: true,
