@@ -33,22 +33,22 @@
 }
 
 .about-section h2 {
-  font-family: var(--font-display);
+  font-family: quicksand;
   font-size: clamp(1.7rem, 5vw, 2.6rem);
   font-weight: 600;
   text-align: center;
   color: var(--navy);
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 0.8;
   word-break: break-word;
 }
 
 .about-section h2::after {
   content: "";
   display: block;
-  width: 46px;
+  width: 75px;
   height: 3px;
-  margin: 0.9rem auto 0;
+  margin: 0.7rem auto 0;
   background: var(--cyan);
   border-radius: 2px;
 }
@@ -139,8 +139,7 @@
 .editor-frame img {
   display: block;
   width: 100%;
-  height: clamp(220px, 40vw, 320px);
-  object-fit: cover;
+  height: auto;
 }
 
 /* the text panel reads like a JS object literal, then plain prose */
