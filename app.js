@@ -1,30 +1,45 @@
-// Contact Form 
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbzMvbs1dQU0LhnRVLUx078guYDDQ-mY-hFZOxGQW7yWlaEDuK_pY7tW_cWR15REIN13/exec";
+//------ CONTACT FORM -----
 
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   status.textContent = "Sending...";
 
-  fetch(scriptURL, { method: "POST", body: new FormData(form) })
-    .then((response) => {
-      if (response.ok) {
-        status.textContent = "✅ Message sent successfully!";
-        form.reset();
-      } else {
-        status.textContent = "❌ Something went wrong. Try again.";
+  const formData = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    message: form.message.value.trim(),
+  };
+
+  try {
+    const response = await fetch(
+      "https://gauravkumar42githubio-production.up.railway.app/api/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       }
-    })
-    .catch((error) => {
-      console.error("Error!", error.message);
-      status.textContent = "⚠️ Error sending message.";
-    });
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      status.textContent = "✅ Message sent successfully!";
+      form.reset();
+    } else {
+      status.textContent = `❌ ${data.message}`;
+    }
+
+  } catch (error) {
+    console.error("Error:", error);
+    status.textContent = "⚠️ Error sending message.";
+  }
 });
-
-
 
   // Scroll Animation 
 
