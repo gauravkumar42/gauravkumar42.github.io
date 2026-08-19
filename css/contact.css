@@ -1,8 +1,9 @@
 .contact-section {
   padding: 5rem 2rem;
-  background: #fafbfc;
+  background: var(--color-bg);
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .form-container {

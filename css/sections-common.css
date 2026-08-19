@@ -1,14 +1,8 @@
-.section-container,
-#works,
-.contact-section {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 6rem 2rem;
-  text-align: center;
-}
+/* Shared heading styles only.
+   Padding/background now live in each section's own stylesheet
+   so there's a single owner for spacing per section — avoids silent
+   override conflicts between files. */
 
-/* Section Headings */
 .section-container h2,
 #works h2 {
   font-size: 1.8rem;

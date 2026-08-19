@@ -4,19 +4,17 @@
 
 #hero {
   position: relative;
-  padding-top: 6rem;
-  background: #eef2f3;
+  background: var(--color-bg-soft);
 }
 
 .hero-container {
-  min-height: calc(100vh - 6rem);
+  min-height: min(calc(100vh - 84px), 640px);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6rem;
   padding: 0 6rem;
 }
-
 .hero-text {
   flex: 1;
   max-width: 40rem;
@@ -190,6 +188,7 @@
     text-align: center;
     gap: 3rem;
     padding: 4rem 2rem;
+    min-height: auto;
   }
 
   .hero-text {
