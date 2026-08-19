@@ -1,6 +1,4 @@
-/* =========================================
-   HERO SECTION
-========================================= */
+/* HERO SECTION */
 
 #hero {
   position: relative;
@@ -15,9 +13,33 @@
   gap: 6rem;
   padding: 0 6rem;
 }
+
 .hero-text {
   flex: 1;
   max-width: 40rem;
+}
+
+/* open to work status badge */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(90, 212, 248, 0.12);
+  color: #022b4e;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 30px;
+  margin-bottom: 0.9rem;
+}
+
+/* green pulse dot inside the status badge */
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
 }
 
 .hero-text h3 {
@@ -45,8 +67,7 @@
   text-align: justify;
 }
 
-/* Line now animates its width in via scaleX instead of being present instantly.
-   This selector is more specific than the base .reveal rule, so it overrides it. */
+/* animated underline, more specific than the base .reveal rule so it overrides it */
 .hero-text .line.reveal {
   height: 3px;
   width: 100%;
@@ -76,9 +97,7 @@
   transform: scale(1.05);
 }
 
-/* =========================================
-   HERO ACTIONS (Socials + Divider + Resume)
-========================================= */
+/* HERO ACTIONS — socials + divider + resume */
 
 .hero-actions {
   display: flex;
@@ -112,7 +131,7 @@
   transform: translateY(-2px);
 }
 
-/* Thin divider tying the socials and resume button into one composed row */
+/* thin divider tying socials and resume button into one row */
 .hero-divider {
   width: 1px;
   height: 28px;
@@ -136,9 +155,7 @@
   box-shadow: 0 5px 12px rgba(2, 43, 78, 0.25);
 }
 
-/* =========================================
-   SCROLL CUE
-========================================= */
+/* SCROLL CUE */
 
 .scroll-cue {
   position: absolute;
@@ -178,9 +195,7 @@
   }
 }
 
-/* =========================================
-   RESPONSIVE — TABLETS / SMALL LAPTOPS
-========================================= */
+/* RESPONSIVE — tablets / small laptops */
 
 @media (max-width: 1024px) {
   .hero-container {
@@ -201,9 +216,7 @@
   }
 }
 
-/* =========================================
-   MOBILE — BELOW 768px
-========================================= */
+/* RESPONSIVE — mobile below 768px */
 
 @media (max-width: 768px) {
   .hero-container {
@@ -224,15 +237,13 @@
     justify-content: center;
   }
 
-  /* Scroll cue gets crowded next to the mobile bottom tab bar — hide it there */
+  /* scroll cue gets crowded next to the mobile bottom tab bar */
   .scroll-cue {
     display: none;
   }
 }
 
-/* =========================================
-   SMALL MOBILE — 480px AND BELOW
-========================================= */
+/* RESPONSIVE — small mobile 480px and below */
 
 @media (max-width: 480px) {
   .hero-text h1 {
