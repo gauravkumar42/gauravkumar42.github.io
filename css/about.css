@@ -12,7 +12,6 @@
 .about-section {
   --navy: #0a2540;
   --navy-soft: #1c3a5c;
-  --bg-soft: #f4f8fb;
   --panel: #ffffff;
   --border: #dbe4ea;
   --text: #1c2b36;
@@ -24,7 +23,7 @@
   --font-body: "Inter", "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  background: linear-gradient(180deg, var(--bg-soft) 0%, #eef3f6 100%);
+  background: var(--color-bg-soft);
   color: var(--text);
   font-family: var(--font-body);
   padding: clamp(2.75rem, 8vw, 5rem) clamp(1rem, 4vw, 1.5rem) clamp(3.5rem, 10vw, 6rem);
@@ -228,7 +227,7 @@
   border-radius: 50%;
   background: var(--panel);
   border: 3px solid var(--cyan);
-  box-shadow: 0 0 0 4px var(--bg-soft);
+  box-shadow: 0 0 0 4px var(--color-bg-soft);
 }
 
 .commit.is-current .commit-node {
@@ -331,7 +330,7 @@
 .skill-pill {
   font-size: clamp(0.76rem, 2vw, 0.85rem);
   color: var(--navy);
-  background: var(--bg-soft);
+  background: var(--color-bg-soft);
   border: 1px solid var(--border);
   padding: 0.3rem 0.65rem;
   border-radius: 6px;
@@ -376,7 +375,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.55rem 0.9rem;
-  background: var(--bg-soft);
+  background: var(--color-bg-soft);
   border-bottom: 1px solid var(--border);
 }
 

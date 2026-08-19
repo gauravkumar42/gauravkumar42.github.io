@@ -1,5 +1,7 @@
 #works {
-  background: #f8fbfd;
+  background: var(--color-bg);
+  padding: 3.5rem 2rem 6rem;
+  text-align: center;
 }
 
 .projects-container {
