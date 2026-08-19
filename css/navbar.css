@@ -95,9 +95,7 @@ header {
   transform-origin: left;
 }
 
-/* =========================================
-   RESPONSIVE — TABLETS / SMALL LAPTOPS
-========================================= */
+/* ----------- RESPONSIVE — TABLETS / SMALL LAPTOPS ----------- */
 
 @media (max-width: 1024px) {
   .navbar ul {
@@ -105,10 +103,11 @@ header {
   }
 }
 
-/* =========================================
-   MOBILE — BELOW 768px
-   Desktop links hidden, bottom tab bar shown
-========================================= */
+
+/* ----------- 
+MOBILE — BELOW 768px
+Desktop links hidden, bottom tab bar shown 
+----------- */
 
 @media (max-width: 768px) {
   .navbar {
@@ -121,9 +120,7 @@ header {
   }
 }
 
-/* =========================================
-   MOBILE BOTTOM TAB BAR
-========================================= */
+/* ----------- MOBILE BOTTOM TAB BAR ----------- */
 
 .mobile-bottom-nav {
   display: none;
@@ -185,8 +182,4 @@ header {
     background: #5ad4f8;
   }
 
-  /* leave room so bottom bar never covers page content */
-  body {
-    padding-bottom: 4.5rem;
-  }
 }
