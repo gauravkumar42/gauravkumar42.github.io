@@ -13,7 +13,12 @@ const app = express();
 
 //------ MIDDLEWARE -----
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://gauravkumar42.me",
+  })
+);
+
 app.use(express.json());
 
 
