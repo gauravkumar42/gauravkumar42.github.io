@@ -1,6 +1,4 @@
-/* =========================================
-   DESIGN TOKENS
-========================================= */
+/* ---------- DESIGN TOKENS ---------- */
 
 :root {
   /* Colors */
@@ -22,9 +20,7 @@
   --transition-slow: 0.8s ease-out;
 }
 
-/* =========================================
-   BASE / RESET
-========================================= */
+/* ---------- BASE / RESET ---------- */
 
 * {
   margin: 0;
@@ -106,10 +102,7 @@ h6 {
   color: var(--color-primary);
 }
 
-/* =========================================
-   SCROLL REVEAL ANIMATIONS
-   (used across every section)
-========================================= */
+/* SCROLL REVEAL ANIMATIONS (used across every section) */
 
 .reveal {
   opacity: 0;
