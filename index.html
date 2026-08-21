@@ -69,15 +69,10 @@
     <div id="header-root"></div>
     <script src="js/header.js"></script>
 
-    <!-- Hero Section -->
+   <!-- Hero Section -->
     <section id="hero">
       <div class="hero-container">
         <div class="hero-text reveal fade-left">
-          <span class="hero-status">
-            <span class="hero-status-dot"></span>
-            Open to Work
-          </span>
-
           <h3>Hello, I'm</h3>
           <h1>Gaurav Kumar</h1>
           <p>
@@ -102,7 +97,7 @@
               target="_blank"
               class="resume-btn">
 
-              View Resume <i class="fa-solid fa-arrow-up-right"></i>
+              Resume <span class="material-symbols-outlined resume-icon">arrow_outward</span>
             </a>
           </div>
         </div>
@@ -117,6 +112,7 @@
         <i class="fa-solid fa-chevron-down"></i>
       </div>
     </section>
+
 
 
     <!-- Tech Stack Strip -->
@@ -212,68 +208,72 @@
 
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section reveal">
-      <div class="form-container">
-        <!-- Left Info -->
-        <div class="contact-info reveal fade-left">
-          <h2>Let's Connect</h2>
-          <p>
-            I'm always open to new opportunities, collaborations, or just a
-            good conversation about tech. Drop a message below or reach out
-            directly — I usually reply within 2 hours.
-          </p>
+<section id="contact" class="contact-section reveal">
+  <div class="form-container">
+    <!-- Left Info -->
+    <div class="contact-info reveal fade-left">
+      <h2>Contact me</h2>
+      <p>
+        I'm always open to new opportunities, collaborations, or a good
+        conversation about tech. Drop me a message through the form or
+        reach out using the contact options below.
+      </p>
 
-          <div class="info-links">
-            
-            <a href="https://linkedin.com/in/gauravkumar42"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="info-item reveal fade-left"
-              aria-label="LinkedIn"
-            >
-              <i class="fab fa-linkedin-in"></i>
-            </a>
+      <div class="contact-links">
+        <a
+          href="https://wa.me/919569224572"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link reveal fade-left"
+        >
+          <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
+          <span class="contact-text">
+            Text on WhatsApp
+            <span class="contact-detail">+91 95692 24572</span>
+          </span>
+        </a>
 
-            
-            <a href="https://github.com/gauravkumar42"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="info-item reveal fade-left"
-              aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-
-            
-            <a href="mailto:gauravkumar95692@gmail.com"
-              class="info-item reveal fade-left"
-              aria-label="Email">
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Form -->
-        <form id="contact-form" class="reveal fade-right">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit">Send Message</button>
-          <p id="form-status"></p>
-        </form>
+        <a
+          href="mailto:gauravkumar95692@gmail.com"
+          class="contact-link reveal fade-left"
+        >
+          <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+          <span class="contact-text">
+            or just send me an email
+            <span class="contact-detail">gauravkumar95692@gmail.com</span>
+          </span>
+        </a>
       </div>
-    </section>
+    </div>
+
+    <!-- Right Form -->
+    <form id="contact-form" class="reveal fade-right">
+      <div class="form-group">
+        <input type="text" id="name" name="name" placeholder=" " required />
+        <label for="name">Name<span class="required-star">*</span></label>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder=" " required />
+        <label for="email">Email<span class="required-star">*</span></label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="message" name="message" placeholder=" "></textarea>
+        <label for="message">Message</label>
+      </div>
+
+      <div class="form-checkbox">
+        <input type="checkbox" id="agree" name="agree" />
+        <label for="agree">I agree to be contacted about my message.</label>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p id="form-status"></p>
+    </form>
+  </div>
+</section>
+
 
     <!-- JS -->
     <script src="js/app.js"></script>
