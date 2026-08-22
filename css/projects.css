@@ -13,11 +13,13 @@
 }
 
 .project-card {
-  background: #fff;
+  background: var(--color-surface);
   padding: 2.2rem 1.6rem 1.8rem;
   border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(2, 43, 78, 0.06);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid var(--color-line);
+  border-top: 3px solid var(--color-accent); /* static signature line, no reveal animation */
+  box-shadow: 0 2px 8px var(--color-line);
+  transition: box-shadow 0.25s ease; /* one property only — quieter than the old transform+shadow combo */
   text-align: left;
   position: relative;
   overflow: hidden;
@@ -25,55 +27,36 @@
   flex-direction: column;
 }
 
-/* Accent bar that reveals on hover — ties into navbar's underline / hero's line motif */
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(to right, #5ad4f8, #d3ef4a);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(2, 43, 78, 0.1);
-}
-
-.project-card:hover::before {
-  transform: scaleX(1);
+  box-shadow: 0 10px 22px var(--color-line);
 }
 
 .project-index {
   font-family: "Quicksand", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #b9cdd8;
+  color: var(--color-muted);
   letter-spacing: 1px;
   margin-bottom: 0.8rem;
 }
 
 .project-card h3 {
-  color: #022b4e;
+  color: var(--color-ink);
   margin-bottom: 0.6rem;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .project-card span {
   font-size: 0.85rem;
-  color: #5ad4f8;
+  color: var(--color-accent);
   font-weight: 500;
 }
 
 .project-card p {
   font-size: 0.92rem;
-  color: #555;
+  color: var(--color-text);
   line-height: 1.55;
   margin-bottom: 1.1rem;
   flex-grow: 1;
@@ -88,46 +71,84 @@
 }
 
 .project-tags span {
-  background: #eef6fb;
-  color: #022b4e;
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
   font-size: 0.75rem;
   font-weight: 600;
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
 }
 
-/* Link with animated arrow */
+/* Link — a single color change on hover, no icon transform */
 .project-link {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: #022b4e;
+  color: var(--color-ink);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-top: auto;
   width: fit-content;
+  transition: color 0.2s ease;
 }
 
 .project-link i {
   font-size: 0.75rem;
-  transition: transform 0.3s ease;
 }
 
 .project-link:hover {
-  color: #5ad4f8;
-}
-
-.project-link:hover i {
-  transform: translate(3px, -3px);
+  color: var(--color-accent);
 }
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE — synced to contact.css's ladder
 ========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 992px) {
+  #works {
+    padding: 3rem 1.75rem 5rem;
+  }
+
+  .projects-container {
+    gap: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #works {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
   .project-card {
-    padding: 1.8rem 1.3rem 1.5rem;
+    padding: 1.9rem 1.4rem 1.6rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-card p {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    padding: 1.7rem 1.2rem 1.4rem;
+    border-radius: 12px;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-index,
+  .project-tags span {
+    font-size: 0.7rem;
+  }
+
+  .project-link {
+    font-size: 0.8rem;
   }
 }
