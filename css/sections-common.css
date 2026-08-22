@@ -1,13 +1,22 @@
-/* Shared heading styles only.
-   Padding/background now live in each section's own stylesheet
-   so there's a single owner for spacing per section — avoids silent
-   override conflicts between files. */
+/* Shared tokens — single source of truth for color + the base type scale.
+   Padding/background still live in each section's own stylesheet. */
+
+:root {
+  --color-ink: #0F2A3E;      /* headings, buttons */
+  --color-text: #3D4752;     /* body copy */
+  --color-muted: #7A8794;    /* captions, labels, secondary text */
+  --color-accent: #3FA9CC;   /* the one accent — underlines, focus, hover */
+  --color-accent-soft: rgba(63, 169, 204, 0.1);
+  --color-line: rgba(15, 42, 62, 0.08); /* borders / rest shadows */
+  --color-line-strong: rgba(15, 42, 62, 0.16);
+  --color-surface: #FFFFFF;
+}
 
 .section-container h2,
 #works h2 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #022b4e;
+  color: var(--color-ink);
   margin-bottom: 2rem;
   position: relative;
 }
@@ -16,23 +25,38 @@
 #works h2::after {
   content: "";
   display: block;
-  width: 80px;
+  width: 64px;
   height: 3px;
-  background: #5ad4f8;
-  margin: 0.5rem auto 0;
+  background: var(--color-accent);
+  margin: 0.6rem auto 0;
   border-radius: 2px;
 }
 
 .section-container p {
   font-size: 1rem;
-  color: #444;
-  line-height: 1.7;
+  color: var(--color-text);
+  line-height: 1.65;
   margin-bottom: 1.2rem;
 }
 
-/* Small mobile devices (480px and below) */
-@media (max-width: 480px) {
-  h2 {
+@media (max-width: 768px) {
+  .section-container h2,
+  #works h2 {
     font-size: 1.5rem;
+  }
+
+  .section-container p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container h2,
+  #works h2 {
+    font-size: 1.35rem;
+  }
+
+  .section-container p {
+    font-size: 0.9rem;
   }
 }
