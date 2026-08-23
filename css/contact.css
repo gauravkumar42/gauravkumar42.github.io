@@ -46,7 +46,8 @@
 
 .contact-info p {
   font-size: 1rem;
-  color: var(--color-text);
+  color: var(--color-copy); /* was var(--color-text) — updated to match the
+                                renamed token in tokens.css */
   line-height: 1.65;
   margin: 0;
   text-align: left;
@@ -162,7 +163,8 @@ form::before {
   background: transparent;
   font-family: inherit;
   box-sizing: border-box;
-  color: var(--color-ink);
+  color: var(--color-copy); /* was var(--color-text) — updated to match the
+                                renamed token in tokens.css */
 }
 
 /* Resting underline — drawn on .form-group itself, not the input,
@@ -276,7 +278,8 @@ textarea {
 
 .form-checkbox label {
   font-size: 0.88rem;
-  color: var(--color-text);
+  color: var(--color-copy); /* was var(--color-text) — updated to match the
+                                renamed token in tokens.css */
   line-height: 1.55;
   cursor: pointer;
   text-align: left;
