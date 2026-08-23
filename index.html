@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#083D2A" />
     <meta name="application-name" content="Gaurav Kumar" />
     <meta name="author" content="Gaurav Kumar" />
@@ -69,49 +69,62 @@
     <div id="header-root"></div>
     <script src="js/header.js"></script>
 
-   <!-- Hero Section -->
-    <section id="hero">
-      <div class="hero-container">
-        <div class="hero-text reveal fade-left">
-          <h3>Hello, I'm</h3>
-          <h1>Gaurav Kumar</h1>
-          <p>
-            A React developer who loves turning messy problems into clean, fast interfaces. <br> I focus on building responsive, accessible experiences with clean architecture, reusable components, and attention to the details that make the web feel effortless.
+  <!-- Hero Section -->
+<section id="hero">
+  <div class="hero-container">
+    <div class="hero-text reveal fade-left">
+      <h3>Hello, I'm</h3>
+      <h1>Gaurav Kumar</h1>
+      <p>
+        A React developer who loves turning messy problems into clean, fast interfaces.
+        I focus on building responsive, accessible experiences with clean architecture,
+        reusable components, and attention to the details that make the web feel effortless.
+      </p>
+      <!--
+        BUG FIX: removed the manual <br> that forced a line break at a fixed
+        point in the copy. With text-align: justify (desktop only now) a
+        hardcoded break fights the browser's own line-wrapping and can leave
+        an oddly short, over-stretched final line depending on viewport
+        width. Letting it reflow naturally fixes that at every breakpoint.
+      -->
+      <div class="line reveal"></div>
 
-          </p>
-          <div class="line reveal"></div>
-
-          <div class="hero-actions">
-            <div class="hero-socials">
-              <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="https://github.com/gauravkumar42" target="_blank" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
-
-            <span class="hero-divider" aria-hidden="true"></span>
-
-            <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
-              target="_blank"
-              class="resume-btn">
-
-              Resume <span class="material-symbols-outlined resume-icon">arrow_outward</span>
-            </a>
-          </div>
+      <div class="hero-actions">
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
 
-        <div class="hero-img">
-          <img class="reveal fade-right" src="./assets/images/hero-image.jpg" alt="Portrait of Gaurav Kumar" />
-        </div>
-      </div>
+        <span class="hero-divider" aria-hidden="true"></span>
 
-      <div class="scroll-cue" aria-hidden="true">
-        <span></span>
-        <i class="fa-solid fa-chevron-down"></i>
+        <!--
+          BUG FIX: target="_blank" with no rel attribute — reverse
+          tabnabbing risk, same issue as the navbar resume link.
+        -->
+        <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="resume-btn">
+
+          Resume <span class="material-symbols-outlined resume-icon" aria-hidden="true">arrow_outward</span>
+        </a>
       </div>
-    </section>
+    </div>
+
+    <div class="hero-img">
+      <img class="reveal fade-right" src="./assets/images/hero-image.jpg" alt="Portrait of Gaurav Kumar" />
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span></span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
 
 
 

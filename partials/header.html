@@ -1,32 +1,45 @@
 <header id="site-header">
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Primary">
     <div class="logo">
       <a href="/index.html">G<span>Λ</span>UR<span>Λ</span>V</a>
     </div>
     <ul class="nav-links">
-      <li><a href="/index.html#works" class="nav-link">Work</a></li>
+      <li><a href="/index.html#hero" class="nav-link">Home</a></li>
       <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/index.html#works" class="nav-link">Work</a></li>
       <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+      <li>
+        <!--
+          BUG FIX: target="_blank" with no rel attribute lets the page you
+          link to run JS that can access window.opener and redirect your own
+          tab (reverse tabnabbing) — a real security issue, not just a lint
+          warning. rel="noopener noreferrer" closes that off.
+        -->
+        <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
+          target="_blank" rel="noopener noreferrer" class="nav-resume-btn">
+          Resume
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
 
 <!-- Mobile bottom tab bar -->
-<nav class="mobile-bottom-nav">
+<nav class="mobile-bottom-nav" aria-label="Mobile">
   <a href="/index.html" class="nav-link">
-    <span class="material-symbols-outlined">home</span>
+    <span class="material-symbols-outlined" aria-hidden="true">home</span>
     <span class="nav-label">Home</span>
   </a>
   <a href="/index.html#works" class="nav-link">
-    <span class="material-symbols-outlined">work</span>
+    <span class="material-symbols-outlined" aria-hidden="true">work</span>
     <span class="nav-label">Work</span>
   </a>
   <a href="/about.html" class="nav-link">
-    <span class="material-symbols-outlined">person</span>
+    <span class="material-symbols-outlined" aria-hidden="true">person</span>
     <span class="nav-label">About</span>
   </a>
   <a href="/index.html#contact" class="nav-link">
-    <span class="material-symbols-outlined">mail</span>
+    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
     <span class="nav-label">Contact</span>
   </a>
 </nav>

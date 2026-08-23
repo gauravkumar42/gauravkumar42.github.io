@@ -1,56 +1,55 @@
+/* TECH STACK SECTION */
+
 .tech-stack-section {
   background: var(--color-bg-soft);
-  border-top: 1px solid #eef1f4;
-  padding: 3rem 2rem;
+  border-top: 1px solid rgba(2, 43, 78, 0.08);
+  padding: 1.5rem 1.5rem 2.5rem;
   text-align: center;
 }
 
 .tech-stack-eyebrow {
   display: block;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  font-size: 0.85rem;
   color: #1aa8c9;
-  letter-spacing: 0.02em;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.25rem;
 }
 
 .tech-stack-pills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.7rem;
-  max-width: 900px;
-  margin: 0 auto;
+  gap: 0.75rem;
 }
 
 .tech-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--color-bg-soft);
   color: #022b4e;
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
-  border-radius: 30px;
-  border: 1px solid #dbe4ea;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  border-radius: 999px;
+  border: 1px solid #022b4e41;
 }
 
+/*
+  NOTE (not a visual bug, but worth flagging): this rule only affects icon
+  fonts that use currentColor / respect the `color` property. The icons in
+  your screenshot are rendering in their real brand colors (React cyan, JS
+  yellow, Node green, etc.), which means whatever icon set is wired up here
+  ignores `color` entirely — this rule is currently dead for those icons.
+  Left in as a harmless fallback in case a monochrome icon font gets swapped
+  in later, but don't rely on it to control icon color today.
+*/
 .tech-pill i {
   font-size: 1rem;
   color: #5ad4f8;
 }
 
-.tech-pill:hover {
-  transform: translateY(-3px);
-  background: rgba(90, 212, 248, 0.12);
-  border-color: #5ad4f8;
-}
-
 @media (max-width: 480px) {
   .tech-stack-section {
-    padding: 2rem 1rem;
+    padding: 1.25rem 1rem 2rem;
   }
   .tech-pill {
     font-size: 0.8rem;

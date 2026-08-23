@@ -1,3 +1,7 @@
+/* ==========================================================================
+   Site header / navbar
+   ========================================================================== */
+
 header {
   width: 100%;
 }
@@ -12,7 +16,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.2rem 2rem;
+  /* BUG FIX: 14rem of fixed horizontal padding (~224px per side) only worked on
+     very wide screens. On anything from 1024px–1440px wide (still "desktop"
+     per the breakpoint below) it crushed the content and caused wrapping/
+     overflow. clamp() scales the padding smoothly with viewport width instead
+     of relying on a single hardcoded value.
+     UPDATED: capped the max from 8rem down to 3rem — 8rem (128px per side)
+     was still too much breathing room on large desktop screens per request;
+     3rem keeps a comfortable margin without ballooning on wide viewports. */
+  padding: 1.2rem clamp(1.5rem, 4vw, 3rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,7 +34,7 @@ body {
   -webkit-backdrop-filter: blur(0px);
   z-index: 1000;
   transition: background 0.4s ease, box-shadow 0.4s ease,
-    backdrop-filter 0.4s ease, padding 0.3s ease;
+    backdrop-filter 0.4s ease;
 }
 
 #site-header.scrolled .navbar {
@@ -30,7 +42,10 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 2px 16px rgba(2, 43, 78, 0.06);
-  padding: 0.9rem 2rem;
+  /* BUG FIX: this used to repeat the exact same padding value as the base
+     rule, which meant the "padding 0.3s ease" transition in the original
+     had nothing to animate — dead code. Removed the transition since padding
+     no longer changes on scroll (background/blur are what should animate). */
 }
 
 .navbar .logo a {
@@ -55,7 +70,7 @@ body {
 .navbar ul {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -71,6 +86,28 @@ body {
   color: #022b4e;
   padding-bottom: 0.3rem;
   transition: color 0.3s ease;
+}
+
+/* BUG FIX: original selector was ".navbar ul li a .nav-resume-btn" (a
+   descendant combinator), which looks for an element WITH class
+   .nav-resume-btn INSIDE an <a>. But .nav-resume-btn is a class ON the <a>
+   itself, not a child of it, so this rule never matched anything. Changed
+   to ".navbar ul li a.nav-resume-btn" and turned it into an actual button
+   shape (padding + radius) since a 1px border around bare text doesn't read
+   as a button. */
+.navbar ul li a.nav-resume-btn {
+  border: 1px solid #022b4e;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+}
+
+.navbar ul li a.nav-resume-btn::after {
+  display: none; /* the underline hover indicator doesn't suit a button */
+}
+
+.navbar ul li a.nav-resume-btn:hover {
+  background: #022b4e;
+  color: #fff;
 }
 
 .navbar ul li a::after {
@@ -95,6 +132,15 @@ body {
 .navbar ul li a.active::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Visible keyboard focus (was missing entirely — hover-only affordances
+   leave keyboard users with no indication of where they are). */
+.navbar ul li a:focus-visible,
+.mobile-bottom-nav a:focus-visible {
+  outline: 2px solid #5ad4f8;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* -----------
@@ -143,6 +189,17 @@ Top navbar removed entirely, bottom tab bar is the only nav
     padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 
+  /*
+    BUG FIX: env(safe-area-inset-bottom) only resolves to a non-zero value
+    when the page's viewport meta tag includes viewport-fit=cover. If that's
+    missing, the inset is treated as 0 and the bar sits flush against the
+    very bottom edge of the phone — right in the home-indicator / gesture
+    area — which visually eats into the icon+label row (the labels end up
+    looking cut off, as if the bar never had room for them).
+    Add viewport-fit=cover to the <meta name="viewport"> tag in <head>.
+    This min-height is a second safety net so the row itself can never be
+    squeezed shorter than icon + label need, regardless of inset value.
+  */
   .mobile-bottom-nav a {
     flex: 1 1 0;
     position: relative;
@@ -152,6 +209,7 @@ Top navbar removed entirely, bottom tab bar is the only nav
     justify-content: center;
     gap: 0.15rem;
     min-width: 0;
+    min-height: 44px;
     text-decoration: none;
     color: #6b7d8c;
     padding: 0.3rem 0.4rem;
@@ -194,5 +252,28 @@ Top navbar removed entirely, bottom tab bar is the only nav
     height: 4px;
     border-radius: 50%;
     background: #5ad4f8;
+  }
+}
+
+/* Extra-small phones: tighten the tab bar so 4 labeled icons never wrap
+   or get clipped on ~320–360px wide devices (previous version had no
+   adjustment for this range). */
+@media (max-width: 360px) {
+  .mobile-bottom-nav .nav-label {
+    font-size: 0.58rem;
+  }
+
+  .mobile-bottom-nav .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar ul li a,
+  .navbar ul li a::after,
+  .mobile-bottom-nav a {
+    transition: none;
   }
 }

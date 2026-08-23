@@ -3,13 +3,26 @@
 
 :root {
   --color-ink: #0F2A3E;      /* headings, buttons */
-  --color-text: #3D4752;     /* body copy */
+  --color-copy: #3D4752;     /* body copy — renamed from --color-text, which
+                                 collided with the global --color-text
+                                 declared in base.css's :root. Two different
+                                 values under the same custom-property name
+                                 meant the winner depended purely on file
+                                 load order across the whole site. */
   --color-muted: #7A8794;    /* captions, labels, secondary text */
-  --color-accent: #3FA9CC;   /* the one accent — underlines, focus, hover */
-  --color-accent-soft: rgba(63, 169, 204, 0.1);
+  --color-accent-soft: rgba(90, 212, 248, 0.1); /* recalculated from the
+                                 site's actual accent (#5ad4f8, defined once
+                                 in base.css) instead of the old orphaned
+                                 #3FA9CC that nothing else on the site used */
   --color-line: rgba(15, 42, 62, 0.08); /* borders / rest shadows */
   --color-line-strong: rgba(15, 42, 62, 0.16);
   --color-surface: #FFFFFF;
+  /* --color-accent is intentionally NOT redeclared here — base.css already
+     defines it globally as #5ad4f8. A second :root definition of the same
+     variable (previously #3FA9CC) was the actual bug: it silently overrode
+     the site's real accent color everywhere this stylesheet loaded after
+     base.css, causing hero/contact accents to mismatch the navbar/resume
+     button, which stayed hardcoded to #5ad4f8. */
 }
 
 .section-container h2,
@@ -34,7 +47,7 @@
 
 .section-container p {
   font-size: 1rem;
-  color: var(--color-text);
+  color: var(--color-copy);
   line-height: 1.65;
   margin-bottom: 1.2rem;
 }
