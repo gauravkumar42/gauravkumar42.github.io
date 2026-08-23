@@ -14,14 +14,11 @@
 
 .project-card {
   background: var(--color-surface);
-  padding: 2.2rem 1.6rem 1.8rem;
   border-radius: 14px;
   border: 1px solid var(--color-line);
-  border-top: 3px solid var(--color-accent); /* static signature line, no reveal animation */
   box-shadow: 0 2px 8px var(--color-line);
-  transition: box-shadow 0.25s ease; /* one property only — quieter than the old transform+shadow combo */
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
   text-align: left;
-  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -29,15 +26,80 @@
 
 .project-card:hover {
   box-shadow: 0 10px 22px var(--color-line);
+  border-color: var(--color-accent);
 }
 
-.project-index {
-  font-family: "Quicksand", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-muted);
-  letter-spacing: 1px;
-  margin-bottom: 0.8rem;
+/* "Chrome bar" header — category on the left, actions on the right */
+.project-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.4rem;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-accent-soft);
+}
+
+.project-category {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.project-category::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.project-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-icon-link:hover,
+.project-icon-link:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-surface);
+  transform: translateY(-2px);
+}
+
+.project-icon-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.project-card-body {
+  padding: 1.5rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-card h3 {
@@ -48,10 +110,11 @@
   line-height: 1.35;
 }
 
-.project-card span {
+.project-card h3 span {
   font-size: 0.85rem;
   color: var(--color-accent);
   font-weight: 500;
+  margin-left: 0.35rem;
 }
 
 .project-card p {
@@ -67,7 +130,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.4rem;
+  margin-top: auto;
 }
 
 .project-tags span {
@@ -77,28 +140,6 @@
   font-weight: 600;
   padding: 0.3rem 0.7rem;
   border-radius: 20px;
-}
-
-/* Link — a single color change on hover, no icon transform */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--color-ink);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-top: auto;
-  width: fit-content;
-  transition: color 0.2s ease;
-}
-
-.project-link i {
-  font-size: 0.75rem;
-}
-
-.project-link:hover {
-  color: var(--color-accent);
 }
 
 /* =========================================
@@ -120,8 +161,12 @@
     padding: 2.5rem 1.25rem 4rem;
   }
 
-  .project-card {
-    padding: 1.9rem 1.4rem 1.6rem;
+  .project-card-header {
+    padding: 0.8rem 1.2rem;
+  }
+
+  .project-card-body {
+    padding: 1.4rem 1.4rem 1.6rem;
   }
 
   .project-card h3 {
@@ -134,21 +179,25 @@
 }
 
 @media (max-width: 480px) {
-  .project-card {
-    padding: 1.7rem 1.2rem 1.4rem;
-    border-radius: 12px;
+  .project-card-header {
+    padding: 0.75rem 1.1rem;
+  }
+
+  .project-card-body {
+    padding: 1.3rem 1.1rem 1.4rem;
+  }
+
+  .project-category {
+    font-size: 0.65rem;
+  }
+
+  .project-icon-link {
+    width: 30px;
+    height: 30px;
+    font-size: 0.78rem;
   }
 
   .project-card h3 {
     font-size: 1rem;
-  }
-
-  .project-index,
-  .project-tags span {
-    font-size: 0.7rem;
-  }
-
-  .project-link {
-    font-size: 0.8rem;
   }
 }

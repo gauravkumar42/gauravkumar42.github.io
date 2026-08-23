@@ -57,16 +57,10 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/hero.css" />
     <link rel="stylesheet" href="css/sections-common.css" />
-    <!-- BUG FIX: css/tech-stack.css was linked twice; removed the duplicate -->
     <link rel="stylesheet" href="css/tech-stack.css" />
     <link rel="stylesheet" href="css/projects.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <!--
-      NOTE: css/about.css was linked here previously even though index.html
-      has no .about-section markup — dead weight, not a visible bug, but
-      removed since about.html loads it on its own.
-    -->
   </head>
 
   <body>
@@ -83,17 +77,11 @@
       <h3>Hello, I'm</h3>
       <h1>Gaurav Kumar</h1>
       <p>
-        A React developer who loves turning messy problems into clean, fast interfaces.
+        A React developer who loves turning messy problems into clean, fast interfaces. <br>
         I focus on building responsive, accessible experiences with clean architecture,
         reusable components, and attention to the details that make the web feel effortless.
       </p>
-      <!--
-        BUG FIX: removed the manual <br> that forced a line break at a fixed
-        point in the copy. With text-align: justify (desktop only now) a
-        hardcoded break fights the browser's own line-wrapping and can leave
-        an oddly short, over-stretched final line depending on viewport
-        width. Letting it reflow naturally fixes that at every breakpoint.
-      -->
+
       <div class="line reveal"></div>
 
       <div class="hero-actions">
@@ -108,10 +96,6 @@
 
         <span class="hero-divider" aria-hidden="true"></span>
 
-        <!--
-          BUG FIX: target="_blank" with no rel attribute — reverse
-          tabnabbing risk, same issue as the navbar resume link.
-        -->
         <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
@@ -152,79 +136,112 @@
     </section>
 
 
-    <!-- Projects Section  -->
-    <section id="works" class="section-container">
-      <h2 class="reveal fade-right">Selected Work</h2>
-      <div class="projects-container">
+<!-- Projects Section  -->
+<section id="works" class="section-container">
+  <h2 class="reveal fade-right">Selected Work</h2>
+  <div class="projects-container">
 
-        <div class="project-card reveal zoom">
-          <div class="project-index">01</div>
-          <h3>
-            BudgetWise – AI Personal Finance Tracker
-            <span>(Apr 2026)</span>
-          </h3>
-          <p>
-            Built a React-based personal finance tracker with expense tracking,
-            interactive dashboards, analytics, and AI-powered budgeting
-            recommendations.
-          </p>
-          <div class="project-tags">
-            <span>React.js</span>
-            <span>Node.js</span>
-            <span>MongoDB</span>
-            <span>Rest APIs</span>
-            <span>AI</span>
-
-          </div>
-          
-            <a href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
-            target="_blank"
-            class="project-link">
-            View Project <i class="fa-solid fa-arrow-up-right"></i>
+    <div class="project-card reveal zoom">
+      <div class="project-card-header">
+        <span class="project-category">Full-Stack App</span>
+        <div class="project-links">
+          <a href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
+             target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View live demo" title="Live demo">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
+            <i class="fa-brands fa-github"></i>
           </a>
         </div>
-
-        <div class="project-card reveal zoom">
-          <div class="project-index">02</div>
-          <h3>Simon Says Game <span>(June 2026)</span></h3>
-          <p>
-            Interactive memory game built with HTML, CSS, and JavaScript
-            featuring dynamic levels, keyboard interaction, and score tracking.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Game Logic</span>
-          </div>
-          
-          <a href="https://gauravkumar42.me/simon-memory-game/" target="_blank" class="project-link">
-            View Project <i class="fa-solid fa-arrow-up-right"></i>
-          </a>
-        </div>
-
-        <div class="project-card reveal zoom">
-          <div class="project-index">03</div>
-          <h3>Personal Portfolio Website <span>(Feb 2026)</span></h3>
-          <p>
-            Responsive personal portfolio featuring interactive UI,
-            polished animations, and a full-stack contact system.
-          </p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Node.js</span>
-            <span>MySQL</span>
-          </div>
-          
-          <a href="https://gauravkumar42.me/" target="_blank" class="project-link">
-            View Project <i class="fa-solid fa-arrow-up-right"></i>
-          </a>
-        </div>
-
       </div>
-    </section>
+      <div class="project-card-body">
+        <h3>BudgetWise <span>(Apr 2026)</span></h3>
+        <p>
+          A personal finance tracker that turns raw transactions into a clear
+          picture of where money actually goes. Categorized expense logging,
+          interactive spending dashboards, and an AI layer that suggests
+          realistic budget adjustments based on real habits — not generic
+          rules of thumb.
+        </p>
+        <div class="project-tags">
+          <span>React.js</span>
+          <span>Node.js</span>
+          <span>MongoDB</span>
+          <span>REST APIs</span>
+          <span>AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal zoom">
+      <div class="project-card-header">
+        <span class="project-category">Browser Game</span>
+        <div class="project-links">
+          <a href="https://gauravkumar42.me/simon-memory-game/"
+             target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View live demo" title="Live demo">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-card-body">
+        <h3>Simon Says Game <span>(June 2026)</span></h3>
+        <p>
+          A memory game rebuilt from scratch in vanilla JavaScript, with
+          escalating difficulty, full keyboard controls, and a scoring
+          system that rewards precision under pressure. No frameworks —
+          just DOM manipulation, timing logic, and state handled by hand.
+        </p>
+        <div class="project-tags">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>Game Logic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal zoom">
+      <div class="project-card-header">
+        <span class="project-category">Personal Site</span>
+        <div class="project-links">
+          <a href="https://gauravkumar42.me/"
+             target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View live demo" title="Live demo">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-card-body">
+        <h3>Personal Portfolio Website <span>(Feb 2026)</span></h3>
+        <p>
+          The site you're on. Built on a hand-written HTML/CSS/JS foundation
+          with scroll-triggered reveals, and a working contact form wired to
+          a Node.js + MySQL backend — an actual message pipeline, not a
+          static mockup.
+        </p>
+        <div class="project-tags">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>Node.js</span>
+          <span>MySQL</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
     <!-- Contact Section -->
