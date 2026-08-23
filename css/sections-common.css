@@ -1,28 +1,20 @@
-/* Shared tokens — single source of truth for color + the base type scale.
-   Padding/background still live in each section's own stylesheet. */
+/* Shared tokens — single source of truth for the section-level color +
+   base type scale. Padding/background still live in each section's own
+   stylesheet. Values now mirror base.css's :root palette exactly, so
+   index.html's sections and about.html no longer drift apart. */
 
 :root {
-  --color-ink: #0F2A3E;      /* headings, buttons */
-  --color-copy: #3D4752;     /* body copy — renamed from --color-text, which
-                                 collided with the global --color-text
-                                 declared in base.css's :root. Two different
-                                 values under the same custom-property name
-                                 meant the winner depended purely on file
-                                 load order across the whole site. */
-  --color-muted: #7A8794;    /* captions, labels, secondary text */
-  --color-accent-soft: rgba(90, 212, 248, 0.1); /* recalculated from the
-                                 site's actual accent (#5ad4f8, defined once
-                                 in base.css) instead of the old orphaned
-                                 #3FA9CC that nothing else on the site used */
-  --color-line: rgba(15, 42, 62, 0.08); /* borders / rest shadows */
-  --color-line-strong: rgba(15, 42, 62, 0.16);
-  --color-surface: #FFFFFF;
-  /* --color-accent is intentionally NOT redeclared here — base.css already
-     defines it globally as #5ad4f8. A second :root definition of the same
-     variable (previously #3FA9CC) was the actual bug: it silently overrode
-     the site's real accent color everywhere this stylesheet loaded after
-     base.css, causing hero/contact accents to mismatch the navbar/resume
-     button, which stayed hardcoded to #5ad4f8. */
+  --color-ink: #0a2540;                        /* headings, buttons — same as --color-primary */
+  --color-copy: #3d4752;                       /* body copy */
+  --color-muted: #7a8794;                      /* captions, labels, secondary text */
+  --color-accent-soft: rgba(26, 168, 201, 0.1); /* derived from --color-accent */
+  --color-line: rgba(10, 37, 64, 0.08);         /* borders / rest shadows */
+  --color-line-strong: rgba(10, 37, 64, 0.16);
+  --color-surface: #ffffff;
+  /* --color-accent / --color-highlight are intentionally not redeclared
+     here — base.css already defines them globally, and this file loads
+     after base.css on every page, so redefining them would only risk a
+     silent mismatch again. */
 }
 
 .section-container h2,

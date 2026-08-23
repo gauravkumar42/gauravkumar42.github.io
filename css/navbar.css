@@ -16,15 +16,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  /* BUG FIX: 14rem of fixed horizontal padding (~224px per side) only worked on
-     very wide screens. On anything from 1024px–1440px wide (still "desktop"
-     per the breakpoint below) it crushed the content and caused wrapping/
-     overflow. clamp() scales the padding smoothly with viewport width instead
-     of relying on a single hardcoded value.
-     UPDATED: capped the max from 8rem down to 3rem — 8rem (128px per side)
-     was still too much breathing room on large desktop screens per request;
-     3rem keeps a comfortable margin without ballooning on wide viewports. */
-  padding: 1.2rem clamp(1.5rem, 4vw, 3rem);
+  padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,33 +30,26 @@ body {
 }
 
 #site-header.scrolled .navbar {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 16px rgba(2, 43, 78, 0.06);
-  /* BUG FIX: this used to repeat the exact same padding value as the base
-     rule, which meant the "padding 0.3s ease" transition in the original
-     had nothing to animate — dead code. Removed the transition since padding
-     no longer changes on scroll (background/blur are what should animate). */
+  box-shadow: 0 1px 0 var(--color-line, rgba(10, 37, 64, 0.08));
 }
 
+/* ---------- Logo: plain "GAURAV" wordmark ---------- */
+
 .navbar .logo a {
-  font-family: serif;
-  font-size: 18px;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: #022b4e;
+  letter-spacing: 2.5px;
+  color: var(--color-primary);
   text-decoration: none;
-  transition: opacity 0.25s ease;
+  transition: color var(--transition-fast, 0.2s ease);
 }
 
 .navbar .logo a:hover {
-  opacity: 0.75;
-}
-
-.navbar .logo span {
-  display: inline-block;
-  transform: scaleX(0.9);
+  color: var(--color-accent);
 }
 
 .navbar ul {
@@ -80,25 +65,20 @@ body {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: #022b4e;
+  color: var(--color-primary);
   padding-bottom: 0.3rem;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-/* BUG FIX: original selector was ".navbar ul li a .nav-resume-btn" (a
-   descendant combinator), which looks for an element WITH class
-   .nav-resume-btn INSIDE an <a>. But .nav-resume-btn is a class ON the <a>
-   itself, not a child of it, so this rule never matched anything. Changed
-   to ".navbar ul li a.nav-resume-btn" and turned it into an actual button
-   shape (padding + radius) since a 1px border around bare text doesn't read
-   as a button. */
 .navbar ul li a.nav-resume-btn {
-  border: 1px solid #022b4e;
+  border: 1px solid var(--color-primary);
   border-radius: 999px;
   padding: 0.5rem 1.1rem;
+  text-transform: none;
+  font-weight: 600;
 }
 
 .navbar ul li a.nav-resume-btn::after {
@@ -106,7 +86,7 @@ body {
 }
 
 .navbar ul li a.nav-resume-btn:hover {
-  background: #022b4e;
+  background: var(--color-primary);
   color: #fff;
 }
 
@@ -117,15 +97,15 @@ body {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: #d3ef4a;
+  background: var(--color-accent);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
 .navbar ul li a:hover,
 .navbar ul li a.active {
-  color: #5ad4f8;
+  color: var(--color-accent);
 }
 
 .navbar ul li a:hover::after,
@@ -134,11 +114,9 @@ body {
   transform-origin: left;
 }
 
-/* Visible keyboard focus (was missing entirely — hover-only affordances
-   leave keyboard users with no indication of where they are). */
 .navbar ul li a:focus-visible,
 .mobile-bottom-nav a:focus-visible {
-  outline: 2px solid #5ad4f8;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -158,7 +136,7 @@ Top navbar removed entirely, bottom tab bar is the only nav
   }
 }
 
-/* ----------- MOBILE BOTTOM TAB BAR ----------- */
+/* ----------- MOBILE BOTTOM TAB BAR (WhatsApp-style: icon + label) ----------- */
 
 .mobile-bottom-nav {
   display: none;
@@ -176,10 +154,10 @@ Top navbar removed entirely, bottom tab bar is the only nav
     width: 100%;
     padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
 
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 -2px 14px rgba(2, 43, 78, 0.08);
+    box-shadow: 0 -1px 0 var(--color-line, rgba(10, 37, 64, 0.08));
 
     z-index: 1000;
   }
@@ -189,17 +167,6 @@ Top navbar removed entirely, bottom tab bar is the only nav
     padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 
-  /*
-    BUG FIX: env(safe-area-inset-bottom) only resolves to a non-zero value
-    when the page's viewport meta tag includes viewport-fit=cover. If that's
-    missing, the inset is treated as 0 and the bar sits flush against the
-    very bottom edge of the phone — right in the home-indicator / gesture
-    area — which visually eats into the icon+label row (the labels end up
-    looking cut off, as if the bar never had room for them).
-    Add viewport-fit=cover to the <meta name="viewport"> tag in <head>.
-    This min-height is a second safety net so the row itself can never be
-    squeezed shorter than icon + label need, regardless of inset value.
-  */
   .mobile-bottom-nav a {
     flex: 1 1 0;
     position: relative;
@@ -211,10 +178,10 @@ Top navbar removed entirely, bottom tab bar is the only nav
     min-width: 0;
     min-height: 44px;
     text-decoration: none;
-    color: #6b7d8c;
+    color: var(--color-text-muted, #5b6b76);
     padding: 0.3rem 0.4rem;
     border-radius: 14px;
-    transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
   }
 
   .mobile-bottom-nav .material-symbols-outlined {
@@ -236,8 +203,8 @@ Top navbar removed entirely, bottom tab bar is the only nav
   }
 
   .mobile-bottom-nav a.active {
-    color: #022b4e;
-    background: rgba(90, 212, 248, 0.16);
+    color: var(--color-primary);
+    background: var(--color-accent-soft, rgba(26, 168, 201, 0.1));
   }
 
   .mobile-bottom-nav a.active .material-symbols-outlined {
@@ -251,13 +218,12 @@ Top navbar removed entirely, bottom tab bar is the only nav
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #5ad4f8;
+    background: var(--color-accent);
   }
 }
 
-/* Extra-small phones: tighten the tab bar so 4 labeled icons never wrap
-   or get clipped on ~320–360px wide devices (previous version had no
-   adjustment for this range). */
+/* Extra-small phones: keep 4 labeled icons from wrapping/clipping on
+   ~320–360px wide devices */
 @media (max-width: 360px) {
   .mobile-bottom-nav .nav-label {
     font-size: 0.58rem;
@@ -268,7 +234,6 @@ Top navbar removed entirely, bottom tab bar is the only nav
   }
 }
 
-/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   .navbar,
   .navbar ul li a,
