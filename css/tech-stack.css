@@ -2,7 +2,7 @@
 
 .tech-stack-section {
   background: var(--color-bg-soft);
-  border-top: 1px solid rgba(2, 43, 78, 0.08);
+  border-top: 1px solid var(--color-line, rgba(10, 37, 64, 0.08));
   padding: 1.5rem 1.5rem 2.5rem;
   text-align: center;
 }
@@ -10,7 +10,7 @@
 .tech-stack-eyebrow {
   display: block;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  color: #1aa8c9;
+  color: var(--color-accent);
   margin-bottom: 1.25rem;
 }
 
@@ -25,26 +25,25 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #022b4e;
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid #022b4e41;
+  border: 1px solid var(--color-line-strong, rgba(10, 37, 64, 0.16));
+  transition: border-color 0.2s ease;
 }
 
-/*
-  NOTE (not a visual bug, but worth flagging): this rule only affects icon
-  fonts that use currentColor / respect the `color` property. The icons in
-  your screenshot are rendering in their real brand colors (React cyan, JS
-  yellow, Node green, etc.), which means whatever icon set is wired up here
-  ignores `color` entirely — this rule is currently dead for those icons.
-  Left in as a harmless fallback in case a monochrome icon font gets swapped
-  in later, but don't rely on it to control icon color today.
-*/
+.tech-pill:hover {
+  border-color: var(--color-accent);
+}
+
+/* NOTE: Font Awesome brand icons (React, JS, Node, etc.) render in their
+   real brand colors and ignore `color` — this rule is a harmless fallback
+   for any monochrome icon set, not something actively controlling color. */
 .tech-pill i {
   font-size: 1rem;
-  color: #5ad4f8;
+  color: var(--color-accent);
 }
 
 @media (max-width: 480px) {

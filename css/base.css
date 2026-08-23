@@ -1,23 +1,33 @@
 /* ---------- DESIGN TOKENS ---------- */
+/*
+  Single source of truth for color. Previously index.html's sections (hero,
+  navbar, tech-stack) used a blue/cyan/lime palette while about.html defined
+  its own separate navy/cyan/amber palette locally — the two pages looked
+  like different sites. Unified here on the navy/cyan/amber system (it read
+  as the more considered of the two), so every page now shares one palette.
+*/
 
 :root {
   /* Colors */
-  --color-primary: #022b4e;
-  --color-accent: #5ad4f8;
-  --color-highlight: #d3ef4a;
-  --color-text: #111;
-  --color-text-muted: #444;
+  --color-primary: #0a2540;      /* deep navy — headings, ink */
+  --color-accent: #1aa8c9;       /* cyan — links, focus, active states */
+  --color-highlight: #e2894f;    /* warm amber — used sparingly (selection, one-off accents) */
+  --color-text: #1c2b36;
+  --color-text-muted: #5b6b76;
   --color-bg: #ffffff;
-  --color-bg-soft: #eef2f3;
+  --color-bg-soft: #f3f6f8;
+
+  /* Cursor */
+  --cursor-ring-size: 34px;
 
   /* Typography */
-  --font-main: "Poppins", "Montserrat", "sans-serif";
+  --font-main: "Poppins", "Montserrat", sans-serif;
   --font-heading: "Quicksand", sans-serif;
 
-  /* Motion */
-  --transition-fast: 0.25s ease;
-  --transition-base: 0.35s ease;
-  --transition-slow: 0.8s ease-out;
+  /* Motion — kept short and few; this site favors stillness over motion */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------- BASE / RESET ---------- */
@@ -42,19 +52,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Links */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Lists */
 ul,
 ol {
   list-style: none;
 }
 
-/* Media defaults */
 img,
 picture,
 video,
@@ -64,7 +71,6 @@ svg {
   height: auto;
 }
 
-/* Form element inheritance */
 input,
 button,
 textarea,
@@ -79,7 +85,6 @@ button {
   border: none;
 }
 
-/* Headings don't inherit bold weight oddly across browsers */
 h1,
 h2,
 h3,
@@ -90,23 +95,96 @@ h6 {
   line-height: 1.2;
 }
 
-/* Keyboard accessibility — visible focus, no ugly default on mouse click */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-/* Selection Styling */
 ::selection {
   background: var(--color-highlight);
-  color: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+/* A single thin line that fills with scroll position — the site's one
+   "mouse scroll effect": quiet and functional, not a gimmick. */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--color-accent);
+  z-index: 1200;
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 1024px) {
+  /* top navbar is hidden on mobile/tablet in favor of the bottom tab bar,
+     so the progress line moves to the very top edge of the viewport
+     instead of sitting under a header that no longer exists */
+  #scroll-progress {
+    top: 0;
+  }
+}
+
+/* ---------- CUSTOM CURSOR ---------- */
+/* Desktop + fine-pointer only: a small dot that tracks the pointer exactly,
+   plus a soft ring that eases toward it. Both grow slightly over links and
+   buttons. Falls back to the native cursor on touch devices and for anyone
+   who prefers reduced motion. */
+
+@media (hover: hover) and (pointer: fine) {
+  /* Several components (certificate cards, checkboxes, etc.) set their own
+     explicit `cursor: pointer`, which would otherwise override a plain
+     `cursor: none` on <body>. The universal selector here beats those. */
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+  }
+
+  .cursor-ring {
+    width: var(--cursor-ring-size);
+    height: var(--cursor-ring-size);
+    border: 1px solid rgba(26, 168, 201, 0.45);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .cursor-ring.is-active {
+    width: calc(var(--cursor-ring-size) + 16px);
+    height: calc(var(--cursor-ring-size) + 16px);
+    border-color: var(--color-accent);
+  }
+
+  .cursor-ring.is-hidden,
+  .cursor-dot.is-hidden {
+    opacity: 0;
+  }
 }
 
 /* SCROLL REVEAL ANIMATIONS (used across every section) */
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
@@ -116,27 +194,26 @@ h6 {
 }
 
 .reveal.fade-left {
-  transform: translateX(-30px);
+  transform: translateX(-24px);
 }
 .reveal.fade-left.active {
   transform: translateX(0);
 }
 
 .reveal.fade-right {
-  transform: translateX(30px);
+  transform: translateX(24px);
 }
 .reveal.fade-right.active {
   transform: translateX(0);
 }
 
 .reveal.zoom {
-  transform: scale(0.85);
+  transform: scale(0.92);
 }
 .reveal.zoom.active {
   transform: scale(1);
 }
 
-/* Respect users who've asked for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -150,5 +227,14 @@ h6 {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  body.has-custom-cursor * {
+    cursor: auto !important;
   }
 }

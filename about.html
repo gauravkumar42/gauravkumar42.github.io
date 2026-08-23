@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#083D2A" />
+<!--
+  BUG FIX: missing viewport-fit=cover meant env(safe-area-inset-bottom) in
+  navbar.css's mobile bottom nav resolved to 0 on this page, so the tab bar
+  sat flush against the phone's home-indicator area. index.html already had
+  this fixed; about.html didn't.
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A2540" />
+<meta name="author" content="Gaurav Kumar" />
+<meta
+  name="description"
+  content="About Gaurav Kumar — React.js developer, B.Tech IT graduate, background, skills, and certificates."
+/>
 <title>About — Gaurav Kumar</title>
 
 <!-- Google Fonts -->
@@ -18,11 +29,29 @@
 <!-- Favicon -->
 <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
 
-<link rel="stylesheet" href="css/about.css" />
+<!-- Font Awesome (used by the footer's social icons) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+
+<!--
+  BUG FIX: this page never linked css/base.css, but about.css (and
+  navbar.css) read root custom properties — var(--color-bg-soft),
+  var(--font-heading), var(--color-accent), etc. — that are only defined in
+  base.css's :root. Without it those variables were undefined here, so the
+  page background, cursor, and scroll-progress bar silently broke on this
+  page even though the same CSS worked fine on index.html.
+-->
+<link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/about.css" />
+<link rel="stylesheet" href="css/footer.css" />
 </head>
 
 <body>
+
+<div id="scroll-progress"></div>
 
 <div id="header-root"></div>
 <script src="js/header.js"></script>
@@ -215,5 +244,20 @@
   </div>
 </section>
 
+<!-- Footer -->
+<footer class="site-footer">
+  <span class="footer-brand">GAURAV</span>
+  <p class="footer-note">© 2026 Gaurav Kumar. Built with React.js &amp; Node.js.</p>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://wa.me/919569224572" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:gauravkumar95692@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="js/scroll-effects.js"></script>
+<script src="js/cursor.js"></script>
 </body>
 </html>

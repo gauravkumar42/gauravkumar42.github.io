@@ -26,10 +26,11 @@
 }
 
 .hero-text h1 {
+  /* font-family left exactly as-is on request — do not change */
   font-family: "Quicksand", sans-serif;
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
-  color: #022b4e;
+  color: var(--color-primary);
   margin-bottom: 1rem;
   text-transform: capitalize;
 }
@@ -114,10 +115,10 @@
   justify-content: center;
   border-radius: 50%;
   background: #fff;
-  color: #022b4e;
+  color: var(--color-primary);
   font-size: 1.4rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(10, 37, 64, 0.08);
+  transition: color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-socials a:hover {
@@ -135,19 +136,20 @@
 .hero-divider {
   width: 1px;
   height: 28px;
-  background: rgba(2, 43, 78, 0.15);
+  background: rgba(10, 37, 64, 0.15);
 }
 
 .resume-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: #5ad4f8;
+  background: var(--color-accent);
   color: #fff;
   padding: 0.65rem 1.25rem;
   font-weight: 600;
   font-size: 0.9rem;
   border-radius: 999px;
+  transition: filter 0.2s ease;
 }
 
 .resume-btn:hover {
