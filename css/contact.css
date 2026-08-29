@@ -1,65 +1,89 @@
+#contact {
+  scroll-margin-top: 84px;
+}
+
+/* ---------- SECTION LAYOUT ---------- */
+
 .contact-section {
   background: var(--color-bg);
-  padding: 3.5rem 2rem 6rem; /* same rhythm as #works */
-  display: flex;
-  justify-content: center;
-  text-align: left; /* deliberate exception to #works' centered text — kept per earlier request */
-}
-
-.form-container {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 4rem;
-  max-width: 980px;
-  width: 100%;
-  align-items: start;
-}
-
-/* ------------------ Left: Contact Info ------------------ */
-
-.contact-info {
+  padding: 3.5rem 2rem 6rem;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  text-align: left;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
-.contact-info h2 {
+.contact-eyebrow {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.contact-section h2 {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-ink);
-  margin: 0;
+  margin-bottom: 3rem;
   position: relative;
-  text-align: left;
 }
 
-.contact-info h2::after {
+.contact-section h2::after {
   content: "";
   display: block;
   width: 64px;
   height: 3px;
   background: var(--color-accent);
-  margin: 0.6rem 0 0;
+  margin: 0.6rem auto 0;
   border-radius: 2px;
+}
+
+/* ---------- PANEL ---------- */
+
+.contact-panel {
+  width: 100%;
+  max-width: 1040px;
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-line);
+  border-radius: 22px;
+  padding: 3rem;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* ---------- LEFT: CONTACT INFO ---------- */
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: flex-start;
+  gap: 1.75rem;
 }
 
 .contact-info p {
   font-size: 1rem;
-  color: var(--color-copy); /* was var(--color-text) — updated to match the
-                                renamed token in tokens.css */
-  line-height: 1.65;
+  color: var(--color-copy);
+  line-height: 1.7;
   margin: 0;
   text-align: left;
-  max-width: 40ch;
+  max-width: 38ch;
 }
 
-/* Clickable contact rows (WhatsApp / Email) */
 .contact-links {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  margin-top: 0.35rem;
+  gap: 0.85rem;
   width: 100%;
 }
 
@@ -75,11 +99,13 @@
   border-radius: 14px;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
-  transition: border-color 0.25s ease; /* shadow removed on rest state — kept minimal, only the border shifts */
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-link:hover {
   border-color: var(--color-accent);
+  transform: translateX(3px);
+  box-shadow: 0 6px 16px var(--color-line);
 }
 
 .contact-icon {
@@ -118,31 +144,16 @@
   word-break: break-word;
 }
 
-/* ------------------ Right: Form ------------------ */
+/* ---------- RIGHT: FORM ---------- */
 
 form {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.5rem;
   text-align: left;
-  background: var(--color-surface);
-  padding: 2.4rem 2.2rem;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px var(--color-line);
-  border: 1px solid var(--color-line);
-  overflow: hidden;
-}
-
-/* Static accent cap — a framing device, not a hover reveal */
-form::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--color-accent);
+  padding: 0;
+  height: 100%;
 }
 
 .form-group {
@@ -150,60 +161,83 @@ form::before {
   text-align: left;
 }
 
+/* stronger rest-state border so fields read as inputs even before focus */
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1.35rem 0.2rem 0.6rem;
-  border: none;
-  border-radius: 0;
+  padding: 1.05rem 1rem;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: 12px;
   font-size: 0.95rem;
   outline: none;
-  background: transparent;
+  background: var(--color-surface);
   font-family: inherit;
   box-sizing: border-box;
-  color: var(--color-copy); /* was var(--color-text) — updated to match the
-                                renamed token in tokens.css */
+  color: var(--color-copy);
+  box-shadow: 0 1px 3px var(--color-line);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Resting underline — drawn on .form-group itself, not the input,
-   so it shares the exact same box as the focus bar below and the
-   two can never drift apart by a sub-pixel border-rounding gap. */
-.form-group::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 1.5px;
-  width: 100%;
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: var(--color-accent);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+/* message field grows to fill remaining column height */
+.form-group:nth-of-type(3) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group:nth-of-type(3) textarea {
+  flex: 1;
+  min-height: 90px;
+  resize: none;
+}
+
+.form-group textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb {
   background: var(--color-line-strong);
+  border-radius: 10px;
 }
 
-/* Focus indicator — grows over the resting line, same box as above */
-.form-group::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 0;
-  background: var(--color-accent);
-  transition: width 0.25s ease;
-}
-
-.form-group:focus-within::after {
-  width: 100%;
+.form-group textarea::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .form-group label {
   position: absolute;
-  left: 0.2rem;
-  top: 1.05rem;
+  left: 1rem;
+  top: 1.15rem;
   font-size: 0.95rem;
   color: var(--color-muted);
   font-weight: 500;
   pointer-events: none;
   transition: all 0.2s ease;
+  padding: 0 0.3rem;
   background: transparent;
+}
+
+.form-group input:focus ~ label,
+.form-group textarea:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -0.6rem;
+  left: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  background: var(--color-surface);
 }
 
 .required-star {
@@ -211,27 +245,16 @@ form::before {
   font-weight: 700;
 }
 
-/* Label floats only once there's actual content — focus alone no
-   longer moves it, so an empty-but-focused field still reads clearly. */
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
-  top: -0.6rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-ink);
-}
-
-textarea {
-  min-height: 96px;
-  resize: vertical;
-}
-
-/* Checkbox row */
+/* checkbox row given its own tinted, padded container so it reads as part
+   of the form's rhythm instead of floating between the textarea and button */
 .form-checkbox {
   display: flex;
   align-items: flex-start;
   gap: 0.7rem;
   text-align: left;
+  padding: 0.8rem 0.9rem;
+  border-radius: 10px;
+  background: var(--color-accent-soft);
 }
 
 .form-checkbox input[type="checkbox"] {
@@ -245,6 +268,7 @@ textarea {
   cursor: pointer;
   flex-shrink: 0;
   position: relative;
+  background: var(--color-surface);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -276,41 +300,52 @@ textarea {
 
 .form-checkbox label {
   font-size: 0.88rem;
-  color: var(--color-copy); /* was var(--color-text) — updated to match the
-                                renamed token in tokens.css */
+  color: var(--color-copy);
   line-height: 1.55;
   cursor: pointer;
   text-align: left;
 }
 
-/* Submit button — background + shadow only, arrow stays put (no slide-in dance) */
+/* ---------- SUBMIT BUTTON ---------- */
+
 .btn-submit {
-  width: fit-content;
+  width: 100%;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 2.1rem;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.05rem 2.1rem;
   border: none;
-  border-radius: 10px;
-  background: var(--color-ink);
-  color: #fff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-ink), #123a5e);
+  color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  letter-spacing: 0.3px;
-  box-shadow: 0 6px 16px var(--color-line);
-  transition: background 0.25s ease, box-shadow 0.25s ease;
+  letter-spacing: 0.4px;
+  margin-top: auto;
+  box-shadow: 0 8px 20px var(--color-line);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-.btn-submit::after {
-  content: "\2192";
-  display: inline-block;
+.btn-arrow {
+  font-size: 0.85rem;
+  transition: transform 0.25s ease;
 }
 
 .btn-submit:hover {
   background: var(--color-accent);
   color: var(--color-ink);
-  box-shadow: 0 8px 20px var(--color-line);
+  box-shadow: 0 10px 24px var(--color-line);
+  transform: translateY(-2px);
+}
+
+.btn-submit:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
 }
 
 .btn-submit:focus-visible {
@@ -318,30 +353,62 @@ textarea {
   outline-offset: 2px;
 }
 
-/* ------------------ RESPONSIVE BREAKPOINTS ------------------ */
+/* ---------- RESPONSIVE ---------- */
 
 @media (max-width: 992px) {
   .contact-section {
     padding: 3rem 1.75rem 5rem;
   }
 
+  .contact-section h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-panel {
+    padding: 2.2rem;
+    border-radius: 18px;
+  }
+
   .form-container {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+    align-items: stretch;
+  }
+
+  .contact-info {
+    justify-content: flex-start;
   }
 
   .contact-info p {
     max-width: 54ch;
   }
+
+  form {
+    height: auto;
+  }
+
+  .form-group:nth-of-type(3) textarea {
+    flex: none;
+    min-height: 90px;
+  }
 }
 
 @media (max-width: 768px) {
+  #contact {
+    scroll-margin-top: 0;
+  }
+
   .contact-section {
     padding: 2.5rem 1.25rem 4rem;
   }
 
-  .contact-info h2 {
+  .contact-section h2 {
     font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-panel {
+    padding: 1.6rem;
   }
 
   .contact-info p {
@@ -349,30 +416,17 @@ textarea {
     max-width: none;
   }
 
-  form {
-    padding: 1.9rem 1.4rem;
-    border-radius: 14px;
-  }
-
   .form-group input,
   .form-group textarea {
     font-size: 0.9rem;
-    padding: 1.25rem 0.2rem 0.5rem;
+    padding: 0.95rem 0.9rem;
   }
 
   .form-group label {
-    font-size: 0.9rem;
-  }
-
-  .form-group input:not(:placeholder-shown) ~ label,
-  .form-group textarea:not(:placeholder-shown) ~ label {
-    font-size: 0.68rem;
-    top: -0.55rem;
+    left: 1rem;
   }
 
   .btn-submit {
-    width: 100%;
-    justify-content: center;
     padding: 0.95rem;
   }
 }
@@ -382,8 +436,13 @@ textarea {
     padding: 2rem 1rem 3rem;
   }
 
-  .contact-info h2 {
+  .contact-section h2 {
     font-size: 1.35rem;
+  }
+
+  .contact-panel {
+    padding: 1.25rem;
+    border-radius: 16px;
   }
 
   .contact-link {
@@ -406,24 +465,14 @@ textarea {
     font-size: 0.78rem;
   }
 
-  form {
-    padding: 1.6rem 1.1rem;
-  }
-
   .form-group input,
   .form-group textarea {
     font-size: 0.88rem;
-    padding: 1.2rem 0.15rem 0.45rem;
+    padding: 0.85rem 0.8rem;
   }
 
-  .form-group label {
-    font-size: 0.85rem;
-  }
-
-  .form-group input:not(:placeholder-shown) ~ label,
-  .form-group textarea:not(:placeholder-shown) ~ label {
-    font-size: 0.65rem;
-    top: -0.5rem;
+  .form-checkbox {
+    padding: 0.7rem 0.8rem;
   }
 
   .btn-submit {
@@ -437,16 +486,12 @@ textarea {
     padding: 1.75rem 0.8rem 2.5rem;
   }
 
-  .form-container {
-    gap: 1.75rem;
+  .contact-panel {
+    padding: 1rem;
   }
 
-  .contact-info h2 {
+  .contact-section h2 {
     font-size: 1.2rem;
-  }
-
-  form {
-    padding: 1.3rem 0.9rem;
   }
 
   .btn-submit {

@@ -1,24 +1,17 @@
-/* Shared tokens — single source of truth for the section-level color +
-   base type scale. Padding/background still live in each section's own
-   stylesheet. Values now mirror base.css's :root palette exactly, so
-   index.html's sections and about.html no longer drift apart. */
+/* Shared color + heading styles used across sections */
 
 :root {
-  --color-ink: #0a2540;                        /* headings, buttons — same as --color-primary */
+  --color-ink: #0a2540;                        /* headings, buttons */
   --color-copy: #3d4752;                       /* body copy */
-  --color-muted: #7a8794;                      /* captions, labels, secondary text */
-  --color-accent-soft: rgba(26, 168, 201, 0.1); /* derived from --color-accent */
-  --color-line: rgba(10, 37, 64, 0.08);         /* borders / rest shadows */
+  --color-muted: #7a8794;                      /* captions, labels */
+  --color-accent-soft: rgba(26, 168, 201, 0.1);
+  --color-line: rgba(10, 37, 64, 0.08);         /* borders */
   --color-line-strong: rgba(10, 37, 64, 0.16);
   --color-surface: #ffffff;
-  /* --color-accent / --color-highlight are intentionally not redeclared
-     here — base.css already defines them globally, and this file loads
-     after base.css on every page, so redefining them would only risk a
-     silent mismatch again. */
+  /* --color-accent and --color-highlight come from base.css, not redeclared here */
 }
 
-.section-container h2,
-#works h2 {
+.section-container h2 {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-ink);
@@ -26,8 +19,7 @@
   position: relative;
 }
 
-.section-container h2::after,
-#works h2::after {
+.section-container h2::after {
   content: "";
   display: block;
   width: 64px;
@@ -45,8 +37,7 @@
 }
 
 @media (max-width: 768px) {
-  .section-container h2,
-  #works h2 {
+  .section-container h2 {
     font-size: 1.5rem;
   }
 
@@ -56,8 +47,7 @@
 }
 
 @media (max-width: 480px) {
-  .section-container h2,
-  #works h2 {
+  .section-container h2 {
     font-size: 1.35rem;
   }
 
