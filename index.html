@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="css/sections-common.css" />
     <link rel="stylesheet" href="css/tech-stack.css" />
     <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/experience.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/footer.css" />
   </head>
@@ -128,12 +129,61 @@
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-html5"></i> HTML5</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-node-js"></i> Node.js</span>
-        <span class="tech-pill reveal zoom"><i class="fa-solid fa-database"></i> MongoDB</span>
+        <span class="tech-pill reveal zoom"><i class="fa-solid fa-leaf"></i> MongoDB</span>
         <span class="tech-pill reveal zoom"><i class="fa-solid fa-database"></i> MySQL</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-git-alt"></i> Git</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-github"></i> GitHub</span>
       </div>
     </section>
+
+
+
+<!-- Experience & Learning Section -->
+<section id="experience" class="section-container">
+  <h2 class="reveal fade-right">Experience &amp; Learning</h2>
+  <div class="experience-container">
+
+    <div class="experience-card reveal zoom">
+      <div class="experience-card-header">
+        <h3>Virtual Internship</h3>
+        <span class="experience-year">2025</span>
+      </div>
+      <span class="experience-org">Infosys Springboard</span>
+      <p>
+        Completed a guided, project-based virtual internship covering
+        software engineering fundamentals and full-stack development
+        practices.
+      </p>
+    </div>
+
+    <div class="experience-card reveal zoom">
+      <div class="experience-card-header">
+        <h3>Software Engineering Program</h3>
+        <span class="experience-year">2025</span>
+      </div>
+      <span class="experience-org">Infosys Springboard</span>
+      <p>
+        Worked through structured modules on software engineering
+        concepts — SDLC, coding standards, and collaborative development
+        practices.
+      </p>
+    </div>
+
+    <div class="experience-card reveal zoom">
+      <div class="experience-card-header">
+        <h3>Full Stack Web Development</h3>
+        <span class="experience-year">2024</span>
+      </div>
+      <span class="experience-org">Apna College — MERN Stack</span>
+      <p>
+        Completed an intensive MERN stack program covering React,
+        Node.js, Express, and MongoDB through hands-on projects.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
 
 <!-- Projects Section  -->
@@ -244,70 +294,73 @@
 </section>
 
 
-    <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="contact-section reveal">
-  <div class="form-container">
-    <!-- Left Info -->
-    <div class="contact-info reveal fade-left">
-      <h2>Contact me</h2>
-      <p>
-        I'm always open to new opportunities, collaborations, or a good
-        conversation about tech. Drop me a message through the form or
-        reach out using the contact options below.
-      </p>
+  <span class="contact-eyebrow reveal">// let's talk</span>
+  <h2 class="reveal fade-right">Contact me</h2>
 
-      <div class="contact-links">
-        <a
-          href="https://wa.me/919569224572"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-link reveal fade-left"
-        >
-          <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
-          <span class="contact-text">
-            Text on WhatsApp
-            <span class="contact-detail">+91 95692 24572</span>
-          </span>
-        </a>
+  <div class="contact-panel reveal zoom">
+    <div class="form-container">
+      <!-- Left Info -->
+      <div class="contact-info reveal fade-left">
+        <p>
+          I'm always open to new opportunities, collaborations, or a good
+          conversation about tech. Drop me a message through the form or
+          reach out using the contact options below.
+        </p>
 
-        <a
-          href="mailto:gauravkumar95692@gmail.com"
-          class="contact-link reveal fade-left"
-        >
-          <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-          <span class="contact-text">
-            or just send me an email
-            <span class="contact-detail">gauravkumar95692@gmail.com</span>
-          </span>
-        </a>
+        <div class="contact-links">
+          <a href="https://wa.me/919569224572"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link reveal fade-left">
+
+            <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
+            <span class="contact-text">
+              Text on WhatsApp
+              <span class="contact-detail">+91 95692 24572</span>
+            </span>
+          </a>
+
+          <a href="mailto:gauravkumar95692@gmail.com" class="contact-link reveal fade-left">
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span class="contact-text">
+              or just send me an email
+              <span class="contact-detail">gauravkumar95692@gmail.com</span>
+            </span>
+          </a>
+        </div>
       </div>
+
+      <!-- Right Form — id, name attributes, and structure all unchanged -->
+      <form id="contact-form" class="reveal fade-right">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder=" " required />
+          <label for="name">Name<span class="required-star">*</span></label>
+        </div>
+
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder=" " required />
+          <label for="email">Email<span class="required-star">*</span></label>
+        </div>
+
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder=" " maxlength="150"></textarea>
+          <label for="message">Message</label>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="agree" name="agree" />
+          <label for="agree">I agree to be contacted about my message.</label>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Send Message</span>
+          <i class="fas fa-arrow-right btn-arrow" aria-hidden="true"></i>
+        </button>
+        <p id="form-status"></p>
+      </form>
     </div>
-
-    <!-- Right Form -->
-    <form id="contact-form" class="reveal fade-right">
-      <div class="form-group">
-        <input type="text" id="name" name="name" placeholder=" " required />
-        <label for="name">Name<span class="required-star">*</span></label>
-      </div>
-
-      <div class="form-group">
-        <input type="email" id="email" name="email" placeholder=" " required />
-        <label for="email">Email<span class="required-star">*</span></label>
-      </div>
-
-      <div class="form-group">
-        <textarea id="message" name="message" placeholder=" "></textarea>
-        <label for="message">Message</label>
-      </div>
-
-      <div class="form-checkbox">
-        <input type="checkbox" id="agree" name="agree" />
-        <label for="agree">I agree to be contacted about my message.</label>
-      </div>
-
-      <button type="submit" class="btn-submit">Send Message</button>
-      <p id="form-status"></p>
-    </form>
   </div>
 </section>
 

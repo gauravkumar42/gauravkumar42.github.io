@@ -108,6 +108,7 @@
   font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.35;
+  min-height: 2.7rem;
 }
 
 .project-card h3 span {

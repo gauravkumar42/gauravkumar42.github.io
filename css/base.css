@@ -41,6 +41,9 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-bg);
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -50,6 +53,7 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
 }
 
 a {

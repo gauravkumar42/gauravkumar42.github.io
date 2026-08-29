@@ -1,0 +1,169 @@
+#experience {
+  background: var(--color-bg);
+  padding: 3.5rem 2rem 6rem;
+  text-align: center;
+}
+
+#experience h2 {
+  text-align: center;
+}
+
+/* ---------- Layout ---------- */
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem; /* matches the breathing room used in .projects-container */
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: left;
+  counter-reset: exp-counter;
+}
+
+/* ---------- Card ---------- */
+
+.experience-card {
+  counter-increment: exp-counter;
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 2rem 2.25rem;
+  text-align: left;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.experience-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 24px var(--color-line);
+  transform: translateY(-3px);
+}
+
+/* large ghost index number in the corner — pure CSS, no extra markup needed */
+.experience-card::after {
+  content: counter(exp-counter, decimal-leading-zero);
+  position: absolute;
+  right: 1.25rem;
+  bottom: -0.5rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-ink);
+  opacity: 0.045;
+  pointer-events: none;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
+.experience-card:hover::after {
+  opacity: 0.08;
+  color: var(--color-accent);
+}
+
+/* ---------- Content rhythm ---------- */
+
+.experience-card-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.experience-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.35;
+}
+
+.experience-year {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+.experience-org {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 0.9rem; /* clear separation before the description */
+}
+
+.experience-card p {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95rem;
+  color: var(--color-copy);
+  line-height: 1.65;
+  max-width: 58ch; /* keeps line length readable, stops text running
+                       under the ghost number on wide cards */
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 992px) {
+  #experience {
+    padding: 3rem 1.75rem 5rem;
+  }
+
+  .experience-container {
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #experience {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem 1.6rem;
+  }
+
+  .experience-card::after {
+    font-size: 3.6rem;
+    right: 1rem;
+  }
+
+  .experience-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .experience-card-header h3 {
+    font-size: 1.05rem;
+  }
+
+  .experience-org {
+    margin-bottom: 0.7rem;
+  }
+
+  .experience-card p {
+    font-size: 0.88rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-card {
+    padding: 1.3rem 1.25rem;
+  }
+
+  .experience-card::after {
+    font-size: 3rem;
+    bottom: -0.3rem;
+    right: 0.8rem;
+  }
+}
