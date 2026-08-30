@@ -35,14 +35,6 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 />
 
-<!--
-  BUG FIX: this page never linked css/base.css, but about.css (and
-  navbar.css) read root custom properties — var(--color-bg-soft),
-  var(--font-heading), var(--color-accent), etc. — that are only defined in
-  base.css's :root. Without it those variables were undefined here, so the
-  page background, cursor, and scroll-progress bar silently broke on this
-  page even though the same CSS worked fine on index.html.
--->
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/navbar.css" />
 <link rel="stylesheet" href="css/about.css" />
@@ -206,6 +198,18 @@
     <div class="certificates-container">
       <div class="certificate-card reveal zoom">
         <div class="cert-tab">
+          <span>internship_cert.jpg</span>
+          <span class="cert-badge">CERT</span>
+        </div>
+        <img src="./assets/images/internship_cert.jpg" alt="Internship Certificate - Infosys Springboard" />
+        <div class="card-overlay">
+          <h4>Virtual Internship</h4>
+          <p>Infosys SpringBoard</p>
+        </div>
+      </div>
+
+      <div class="certificate-card reveal zoom">
+        <div class="cert-tab">
           <span>web_dev_cert.png</span>
           <span class="cert-badge">CERT</span>
         </div>
@@ -216,17 +220,6 @@
         </div>
       </div>
 
-      <div class="certificate-card reveal zoom">
-        <div class="cert-tab">
-          <span>internship_cert.jpg</span>
-          <span class="cert-badge">CERT</span>
-        </div>
-        <img src="./assets/images/internship_cert.jpg" alt="Internship Certificate - Infosys Springboard" />
-        <div class="card-overlay">
-          <h4>Virtual Internship</h4>
-          <p>Infosys SpringBoard</p>
-        </div>
-      </div>
 
       <div class="certificate-card reveal zoom">
         <div class="cert-tab">
@@ -246,14 +239,14 @@
 
 <!-- Footer -->
 <footer class="site-footer">
-  <span class="footer-brand">GAURAV</span>
-  <p class="footer-note">© 2026 Gaurav Kumar. Built with React.js &amp; Node.js.</p>
   <div class="footer-socials">
     <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
     <a href="https://wa.me/919569224572" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <a href="mailto:gauravkumar95692@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
   </div>
+
+  <p class="footer-note">© 2026 Gaurav Kumar. Built with React.js &amp; Node.js.</p>
 </footer>
 
 <!-- JS -->
