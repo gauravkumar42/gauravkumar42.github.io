@@ -29,7 +29,7 @@
   border-color: var(--color-accent);
 }
 
-/* "Chrome bar" header — category on the left, actions on the right */
+/* "chrome bar" header — category on the left, actions on the right */
 .project-card-header {
   display: flex;
   align-items: center;
@@ -77,7 +77,6 @@
   border-radius: 50%;
   border: 1px solid var(--color-line);
   color: var(--color-ink);
-  text-decoration: none;
   font-size: 0.85rem;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
@@ -126,7 +125,6 @@
   flex-grow: 1;
 }
 
-/* Tech-stack pill tags */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -143,9 +141,30 @@
   border-radius: 20px;
 }
 
-/* =========================================
-   RESPONSIVE — synced to contact.css's ladder
-========================================= */
+/* "view all projects" link used on the home page, below the selected grid */
+.view-all-wrap {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--color-line-strong);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.view-all-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
 
 @media (max-width: 992px) {
   #works {

@@ -2,8 +2,6 @@
   scroll-margin-top: 84px;
 }
 
-/* ---------- SECTION LAYOUT ---------- */
-
 .contact-section {
   background: var(--color-bg);
   padding: 3.5rem 2rem 6rem;
@@ -11,16 +9,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.contact-eyebrow {
-  display: block;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  letter-spacing: 0.02em;
-  margin-bottom: 0.6rem;
 }
 
 .contact-section h2 {
@@ -95,8 +83,6 @@
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  text-decoration: none;
-  color: inherit;
   padding: 0.85rem 1rem;
   border-radius: 14px;
   background: var(--color-surface);
@@ -166,7 +152,6 @@ form {
   text-align: left;
 }
 
-/* stronger rest-state border so fields read as inputs even before focus */
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -254,8 +239,6 @@ form {
   font-weight: 700;
 }
 
-/* checkbox row given its own tinted, padded container so it reads as part
-   of the form's rhythm instead of floating between the textarea and button */
 .form-checkbox {
   display: flex;
   align-items: flex-start;
@@ -326,11 +309,10 @@ form {
   padding: 1.05rem 2.1rem;
   border: none;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--color-ink), #123a5e);
+  background: linear-gradient(135deg, var(--color-ink), var(--color-accent-strong));
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
-  cursor: pointer;
   letter-spacing: 0.4px;
   margin-top: auto;
   box-shadow: 0 8px 20px var(--color-line);
@@ -361,6 +343,12 @@ form {
 .btn-submit:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+#form-status {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  min-height: 1.2em;
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -477,7 +465,7 @@ form {
 
   .form-group input,
   .form-group textarea {
-    font-size: 16px; /* prevents iOS auto-zoom on focus */
+    font-size: 16px;
     padding: 0.85rem 0.8rem;
   }
 

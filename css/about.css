@@ -1,30 +1,11 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .about-section {
-  --navy: #0a2540;
-  --navy-soft: #1c3a5c;
-  --panel: #ffffff;
-  --border: #dbe4ea;
-  --text: #1c2b36;
-  --text-muted: #5b6b76;
-  --cyan: #1aa8c9;
-  --cyan-soft: rgba(26, 168, 201, 0.14);
-  --amber: #e2894f;
+  /* font-families kept exactly as before, only the color system moved to base.css */
   --font-display: "Space Grotesk", "Segoe UI", sans-serif;
   --font-body: "Inter", "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  background: var(--color-bg-soft);
-  color: var(--text);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-body);
   padding: clamp(2.75rem, 8vw, 5rem) clamp(1rem, 4vw, 1.5rem) clamp(3.5rem, 10vw, 6rem);
   overflow-x: hidden;
@@ -33,42 +14,28 @@
 
 .about-section h2 {
   font-family: quicksand;
-  font-size: clamp(1.7rem, 5vw, 2.6rem);
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
   font-weight: 600;
   text-align: center;
-  color: var(--navy);
-  letter-spacing: -0.02em;
-  line-height: 0.8;
+  color: var(--color-primary);
   word-break: break-word;
 }
 
 .about-section h2::after {
   content: "";
   display: block;
-  width: 75px;
+  width: 64px;
   height: 3px;
   margin: 0.7rem auto 0;
-  background: var(--cyan);
+  background: var(--color-accent);
   border-radius: 2px;
-}
-
-/* eyebrow — a "comment line" above each block, in the developer's own voice */
-.about-eyebrow {
-  display: block;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: clamp(0.72rem, 2vw, 0.85rem);
-  color: var(--cyan);
-  margin-bottom: 0.6rem;
-  letter-spacing: 0.02em;
-  padding: 0 1rem;
 }
 
 .about-section h3 {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   font-weight: 600;
-  color: var(--navy);
+  color: var(--color-primary);
   text-align: center;
   margin-bottom: clamp(1.5rem, 4vw, 2.2rem);
   padding: 0 1rem;
@@ -80,7 +47,14 @@
   width: 100%;
 }
 
+/* the shared .eyebrow component uses a system monospace font by default;
+   this page keeps its original JetBrains Mono */
+.about-section .eyebrow {
+  font-family: var(--font-mono);
+}
+
 /* ---------- Intro ---------- */
+
 .about-container {
   display: flex;
   align-items: flex-start;
@@ -92,22 +66,22 @@
   width: 100%;
 }
 
-/* the photo lives inside a small "editor window" */
+/* the photo lives inside a small "editor window", nodding to the dev theme */
 .editor-frame {
   width: 100%;
   max-width: 280px;
   border-radius: 12px;
   overflow: hidden;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 40px -12px rgba(10, 37, 64, 0.25);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 20px 40px -12px rgba(10, 37, 64, 0.22);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   flex-shrink: 0;
 }
 
 .editor-frame:hover {
   transform: translateY(-6px);
-  box-shadow: 0 26px 50px -12px rgba(10, 37, 64, 0.32);
+  box-shadow: 0 26px 50px -12px rgba(10, 37, 64, 0.28);
 }
 
 .editor-frame .editor-titlebar {
@@ -115,24 +89,26 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 0.8rem;
-  background: var(--navy);
+  background: var(--color-primary);
 }
 
 .editor-frame .dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
 }
 
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+/* dots stay monochrome (shades of white on navy) to keep the palette to two colors */
+.editor-frame .dot.active {
+  background: var(--color-accent);
+}
 
 .editor-frame .editor-filename {
   margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: #9db3c6;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .editor-frame img {
@@ -141,7 +117,7 @@
   height: auto;
 }
 
-/* the text panel reads like a JS object literal, then plain prose */
+/* text panel: a code-style object literal, then plain prose */
 .about-text {
   width: 100%;
   max-width: 560px;
@@ -153,7 +129,7 @@
   font-family: var(--font-mono);
   font-size: clamp(0.78rem, 2vw, 0.92rem);
   line-height: 1.9;
-  background: var(--navy);
+  background: var(--color-primary);
   color: #d7e6f0;
   border-radius: 10px;
   padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 3vw, 1.6rem);
@@ -163,27 +139,29 @@
   max-width: 100%;
 }
 
+/* two shades of the accent stand in for a syntax-highlight palette */
 .about-object .kw { color: #7fb8ff; }
 .about-object .key { color: #9db3c6; }
-.about-object .str { color: var(--amber); }
+.about-object .str { color: #6bd6ec; }
 .about-object .punc { color: #5b7791; }
 
 .about-text p {
   font-size: clamp(0.92rem, 2.2vw, 1.02rem);
   line-height: 1.8;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 1rem;
 }
 
 .about-text .highlight {
-  color: var(--navy);
+  color: var(--color-primary);
   font-weight: 600;
-  background: var(--cyan-soft);
+  background: var(--color-accent-soft);
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
 }
 
-/* ---------- Academics: git commit graph ---------- */
+/* ---------- Academics: git-commit-style timeline ---------- */
+
 .commit-graph {
   position: relative;
   max-width: 760px;
@@ -202,8 +180,8 @@
   width: 2px;
   background: repeating-linear-gradient(
     to bottom,
-    var(--cyan) 0,
-    var(--cyan) 6px,
+    var(--color-accent) 0,
+    var(--color-accent) 6px,
     transparent 6px,
     transparent 12px
   );
@@ -225,18 +203,18 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--panel);
-  border: 3px solid var(--cyan);
+  background: var(--color-surface);
+  border: 3px solid var(--color-accent);
   box-shadow: 0 0 0 4px var(--color-bg-soft);
 }
 
 .commit.is-current .commit-node {
-  background: var(--cyan);
+  background: var(--color-accent);
 }
 
 .commit-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 10px;
   padding: clamp(0.9rem, 3vw, 1.2rem) clamp(1rem, 3.5vw, 1.5rem);
   box-shadow: 0 6px 16px rgba(10, 37, 64, 0.06);
@@ -262,14 +240,14 @@
   font-family: var(--font-display);
   font-size: clamp(0.98rem, 2.8vw, 1.1rem);
   font-weight: 600;
-  color: var(--navy);
+  color: var(--color-primary);
 }
 
 .commit-tag {
   font-family: var(--font-mono);
   font-size: clamp(0.68rem, 2vw, 0.75rem);
-  color: var(--cyan);
-  background: var(--cyan-soft);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
   padding: 0.15rem 0.55rem;
   border-radius: 20px;
   white-space: nowrap;
@@ -277,17 +255,18 @@
 
 .commit-card span {
   font-size: clamp(0.85rem, 2.2vw, 0.92rem);
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   display: block;
 }
 
 /* ---------- Skills: rendered like a JSON object ---------- */
+
 .skills-json {
   max-width: 760px;
   width: 100%;
   margin: 0 auto;
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
   padding: clamp(1.2rem, 4vw, 2rem) clamp(1.1rem, 4vw, 2.2rem);
   box-shadow: 0 10px 24px rgba(10, 37, 64, 0.08);
@@ -300,7 +279,7 @@
   flex-wrap: wrap;
   gap: 0.4rem 0.6rem;
   padding: 0.7rem 0;
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--color-line);
 }
 
 .skills-row:last-child {
@@ -308,7 +287,7 @@
 }
 
 .skills-key {
-  color: var(--navy-soft);
+  color: var(--color-primary);
   font-size: clamp(0.85rem, 2.3vw, 0.95rem);
   font-weight: 600;
   min-width: 130px;
@@ -317,7 +296,7 @@
 
 .skills-key::after {
   content: ":";
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .skills-values {
@@ -329,9 +308,9 @@
 
 .skill-pill {
   font-size: clamp(0.76rem, 2vw, 0.85rem);
-  color: var(--navy);
+  color: var(--color-primary);
   background: var(--color-bg-soft);
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-line);
   padding: 0.3rem 0.65rem;
   border-radius: 6px;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
@@ -339,12 +318,13 @@
 }
 
 .skill-pill:hover {
-  background: var(--cyan-soft);
-  border-color: var(--cyan);
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
 /* ---------- Certificates ---------- */
+
 .certificates-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
@@ -356,8 +336,8 @@
 
 .certificate-card {
   position: relative;
-  background: var(--panel);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(10, 37, 64, 0.07);
@@ -376,13 +356,13 @@
   justify-content: space-between;
   padding: 0.55rem 0.9rem;
   background: var(--color-bg-soft);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .cert-tab span {
   font-family: var(--font-mono);
   font-size: clamp(0.65rem, 2vw, 0.72rem);
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -392,8 +372,8 @@
   font-family: var(--font-mono);
   font-size: clamp(0.6rem, 1.8vw, 0.68rem);
   font-weight: 600;
-  color: var(--cyan);
-  background: var(--cyan-soft);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
   padding: 0.1rem 0.5rem;
   border-radius: 4px;
   flex-shrink: 0;
@@ -412,7 +392,7 @@
 .card-overlay {
   position: absolute;
   inset: 0;
-  top: 33px; /* leave the tab visible */
+  top: 33px;
   background: rgba(10, 37, 64, 0.92);
   color: #fff;
   display: flex;
@@ -439,13 +419,12 @@
 .card-overlay p {
   font-size: 0.9rem;
   margin: 0;
-  color: var(--cyan);
+  color: var(--color-accent);
   font-family: var(--font-mono);
 }
 
 /* ---------- Responsive ---------- */
 
-/* Tablet and below: intro stacks, photo centers above text */
 @media (max-width: 900px) {
   .about-container {
     flex-direction: column;
@@ -463,7 +442,6 @@
   }
 }
 
-/* Small tablet / large phone: keys stack above their value pills */
 @media (max-width: 700px) {
   .skills-row {
     flex-direction: column;
@@ -487,11 +465,10 @@
   }
 
   .commit-card:hover {
-    transform: none; /* horizontal shift feels cramped once the graph itself is narrow */
+    transform: none;
   }
 }
 
-/* Phones */
 @media (max-width: 480px) {
   .about-block {
     margin-top: clamp(2.25rem, 9vw, 3rem);
@@ -507,7 +484,7 @@
 
   .about-object {
     padding: 1rem 1.1rem;
-    white-space: pre-wrap; /* let the object literal wrap instead of scrolling on narrow phones */
+    white-space: pre-wrap;
     word-break: break-word;
   }
 
@@ -523,11 +500,10 @@
   }
 
   .certificate-card:hover {
-    transform: none; /* avoid layout jump on tap-to-hover touch devices */
+    transform: none;
   }
 }
 
-/* Very small phones */
 @media (max-width: 360px) {
   .about-section {
     padding-left: 0.85rem;
@@ -547,8 +523,6 @@
   }
 }
 
-/* Touch devices: hover-only affordances (card lift, pill lift) get dropped
-   since there's no hover state to trigger them meaningfully */
 @media (hover: none) {
   .editor-frame:hover,
   .commit-card:hover,
@@ -558,7 +532,6 @@
   }
 }
 
-/* Large desktop: a little extra breathing room */
 @media (min-width: 1400px) {
   .about-block,
   .about-container {
@@ -566,7 +539,6 @@
   }
 }
 
-/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .editor-frame,
   .commit-card,
