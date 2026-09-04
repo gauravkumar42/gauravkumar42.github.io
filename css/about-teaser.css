@@ -1,0 +1,47 @@
+#about-teaser {
+  background: var(--color-bg);
+  padding: 3.5rem 2rem 4.5rem;
+}
+
+.about-teaser-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-teaser-inner h2 {
+  text-align: center;
+}
+
+.about-teaser-inner p {
+  max-width: 62ch;
+  margin: 0 auto 1.6rem;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+.about-teaser-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.about-teaser-link:hover {
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  #about-teaser {
+    padding: 2.5rem 1.25rem 3.25rem;
+  }
+
+  .about-teaser-inner p {
+    font-size: 0.92rem;
+  }
+}

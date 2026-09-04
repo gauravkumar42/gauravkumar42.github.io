@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<!--
-  BUG FIX: missing viewport-fit=cover meant env(safe-area-inset-bottom) in
-  navbar.css's mobile bottom nav resolved to 0 on this page, so the tab bar
-  sat flush against the phone's home-indicator area. index.html already had
-  this fixed; about.html didn't.
--->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0A2540" />
 <meta name="author" content="Gaurav Kumar" />
 <meta
   name="description"
-  content="About Gaurav Kumar — React.js developer, B.Tech IT graduate, background, skills, and certificates."
+  content="About Gaurav Kumar — React.js developer, B.Tech IT graduate. Background, skills, academic timeline, and certificates."
 />
+<link rel="canonical" href="https://gauravkumar42.me/about.html" />
+
+<meta property="og:title" content="About — Gaurav Kumar" />
+<meta property="og:description" content="React.js developer, B.Tech IT graduate. Background, skills, academic timeline, and certificates." />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://gauravkumar42.me/about.html" />
+
 <title>About — Gaurav Kumar</title>
 
 <!-- Google Fonts -->
@@ -26,271 +27,250 @@
 />
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 
-<!-- Favicon -->
 <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
+<link rel="manifest" href="site.webmanifest" />
 
-<!-- Font Awesome (used by the footer's social icons) -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-/>
+<!-- Font Awesome (footer social icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
 <link rel="stylesheet" href="css/base.css" />
 <link rel="stylesheet" href="css/navbar.css" />
+<link rel="stylesheet" href="css/page-hero.css" />
 <link rel="stylesheet" href="css/about.css" />
 <link rel="stylesheet" href="css/footer.css" />
 </head>
 
 <body>
+<a class="skip-link visually-hidden" href="#main-content">Skip to content</a>
 
 <div id="scroll-progress"></div>
 
 <div id="header-root"></div>
 <script src="js/header.js"></script>
 
-<!-- About Section -->
-<section id="about" class="about-section">
-  <h2 class="reveal fade-right">About Me</h2>
+<main id="main-content">
+  <!-- Page intro -->
+  <header class="page-hero">
+    <span class="eyebrow reveal">/* about me */</span>
+    <h1 class="reveal">Building things, one component at a time</h1>
+    <p class="reveal">
+      React developer, recent B.Tech IT graduate, and someone who likes taking
+      an idea from a rough sketch to a live, working app.
+    </p>
+  </header>
 
-  <!-- Intro -->
-  <div class="about-container">
-    <div class="about-img editor-frame reveal fade-left">
-      <div class="editor-titlebar">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-        <span class="editor-filename">profile.jsx</span>
-      </div>
-      <img src="./assets/images/about-photo.jpg" alt="Gaurav Kumar" />
-    </div>
+  <!-- About Section -->
+  <section id="about" class="about-section" aria-labelledby="about-heading">
+    <h2 id="about-heading" class="visually-hidden">Introduction</h2>
 
-    <div class="about-text reveal fade-right">
-      <pre class="about-object"><span class="kw">const</span> developer = <span class="punc">{</span>
+    <div class="about-container">
+      <figure class="about-img editor-frame reveal fade-left">
+        <div class="editor-titlebar">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot active"></span>
+          <span class="editor-filename">profile.jsx</span>
+        </div>
+        <img src="./assets/images/about-photo.jpg" alt="Gaurav Kumar" />
+      </figure>
+
+      <div class="about-text reveal fade-right">
+        <pre class="about-object"><span class="kw">const</span> developer = <span class="punc">{</span>
   <span class="key">name</span>: <span class="str">"Gaurav Kumar"</span>,
   <span class="key">role</span>: <span class="str">"React Developer"</span>,
-  <span class="key">stack</span>: [<span class="str">"React"</span>, <span class="str">"JS"</span>, <span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"Rest APIs"</span> ],
-  <span class="key">status</span>: <span class="str">"B.Tech IT Graduate, Open to Work"</span>,
+  <span class="key">stack</span>: [<span class="str">"React"</span>, <span class="str">"JS"</span>, <span class="str">"HTML"</span>, <span class="str">"CSS"</span>, <span class="str">"Rest APIs"</span>],
+  <span class="key">status</span>: <span class="str">"Open to Work"</span>,
 <span class="punc">}</span>;</pre>
 
-      <p>
-        I'm a <span class="highlight">React Developer</span> focused
-        on building responsive, accessible, and production-oriented web
-        applications — from component architecture and hooks to routing,
-        forms, and API integration.
-      </p>
-      <p>
-        Beyond the interface, I work through the full path from
-        <span class="highlight">development to deployment</span>: Git and
-        GitHub workflows, debugging real console and network errors, and
-        handling loading, error, and auth states the way a live app actually
-        needs them.
-      </p>
-      <p>
-        I'm a recent B.Tech IT Engineering graduate from
-        <strong>Ajay Kumar Garg Engineering College, Ghaziabad</strong>,
-        focused on building clean, maintainable, and production-oriented React applications.
-      </p>
+        <p>
+          I'm a <span class="highlight">React developer</span> focused on building
+          responsive, accessible, and production-oriented web applications — from
+          component architecture and hooks to routing, forms, and API integration.
+        </p>
+        <p>
+          Beyond the interface, I work through the full path from
+          <span class="highlight">development to deployment</span>: Git and GitHub
+          workflows, debugging real console and network errors, and handling
+          loading, error, and auth states the way a live app actually needs them.
+        </p>
+        <p>
+          I'm a recent B.Tech IT Engineering graduate from
+          <strong>Ajay Kumar Garg Engineering College, Ghaziabad</strong>, focused
+          on building clean, maintainable, production-oriented React applications.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Academics -->
-  <div class="about-block">
-    <span class="about-eyebrow">/* academic timeline */</span>
-    <h3 class="reveal fade-left">Academic Details</h3>
+    <!-- Academics -->
+    <div class="about-block">
+      <span class="eyebrow">/* academic timeline */</span>
+      <h3 class="reveal fade-left">Academic Details</h3>
 
-    <div class="commit-graph">
-      <div class="commit is-current reveal fade-right">
-        <span class="commit-node"></span>
-        <div class="commit-card">
-          <div class="commit-head">
-            <h4>B.Tech (IT Engineering)</h4>
-            <span class="commit-tag">2023 – 2026</span>
+      <ol class="commit-graph">
+        <li class="commit is-current reveal fade-right">
+          <span class="commit-node" aria-hidden="true"></span>
+          <div class="commit-card">
+            <div class="commit-head">
+              <h4>B.Tech (IT Engineering)</h4>
+              <span class="commit-tag">2023 – 2026</span>
+            </div>
+            <span>Ajay Kumar Garg Engineering College, Ghaziabad</span>
           </div>
-          <span>Ajay Kumar Garg Engineering College, Ghaziabad</span>
-        </div>
-      </div>
+        </li>
 
-      <div class="commit reveal fade-right">
-        <span class="commit-node"></span>
-        <div class="commit-card">
-          <div class="commit-head">
-            <h4>Diploma in IT (BTEUP)</h4>
-            <span class="commit-tag">2022 · 72.74%</span>
+        <li class="commit reveal fade-right">
+          <span class="commit-node" aria-hidden="true"></span>
+          <div class="commit-card">
+            <div class="commit-head">
+              <h4>Diploma in IT (BTEUP)</h4>
+              <span class="commit-tag">2022 · 72.74%</span>
+            </div>
+            <span>Government Polytechnic, Ghaziabad</span>
           </div>
-          <span>Government Polytechnic, Ghaziabad</span>
-        </div>
-      </div>
+        </li>
 
-      <div class="commit reveal fade-right">
-        <span class="commit-node"></span>
-        <div class="commit-card">
-          <div class="commit-head">
-            <h4>Class X (UP Board)</h4>
-            <span class="commit-tag">2017 · 72.16%</span>
+        <li class="commit reveal fade-right">
+          <span class="commit-node" aria-hidden="true"></span>
+          <div class="commit-card">
+            <div class="commit-head">
+              <h4>Class X (UP Board)</h4>
+              <span class="commit-tag">2017 · 72.16%</span>
+            </div>
+            <span>Sri Ram Singh I C, Kaimganj, Farrukhabad</span>
           </div>
-          <span>Sri Ram Singh I C, Kaimganj, Farrukhabad</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Skills -->
+    <div class="about-block">
+      <span class="eyebrow">// skills.json</span>
+      <h3 class="reveal fade-left">Skills</h3>
+
+      <div class="skills-json reveal zoom">
+        <div class="skills-row">
+          <span class="skills-key">languages</span>
+          <div class="skills-values">
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">SQL</span>
+          </div>
+        </div>
+
+        <div class="skills-row">
+          <span class="skills-key">frontend</span>
+          <div class="skills-values">
+            <span class="skill-pill">HTML5</span>
+            <span class="skill-pill">CSS3</span>
+            <span class="skill-pill">React.js</span>
+            <span class="skill-pill">Bootstrap</span>
+            <span class="skill-pill">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <div class="skills-row">
+          <span class="skills-key">database</span>
+          <div class="skills-values">
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skills-row">
+          <span class="skills-key">tools</span>
+          <div class="skills-values">
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">Postman</span>
+            <span class="skill-pill">VS Code</span>
+          </div>
+        </div>
+
+        <div class="skills-row">
+          <span class="skills-key">soft_skills</span>
+          <div class="skills-values">
+            <span class="skill-pill">Problem-Solving</span>
+            <span class="skill-pill">Collaboration</span>
+            <span class="skill-pill">Communication</span>
+            <span class="skill-pill">Adaptability</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Skills -->
-  <div class="about-block">
-    <span class="about-eyebrow">// skills.json</span>
-    <h3 class="reveal fade-left">Skills</h3>
+    <!-- Certificates -->
+    <div class="about-block">
+      <span class="eyebrow">/* certificates */</span>
+      <h3 class="reveal fade-left">Certificates</h3>
 
-    <div class="skills-json reveal zoom">
-      <div class="skills-row">
-        <span class="skills-key">languages</span>
-        <div class="skills-values">
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">SQL</span>
-        </div>
-      </div>
+      <div class="certificates-container">
+        <article class="certificate-card reveal zoom">
+          <div class="cert-tab">
+            <span>internship_cert.jpg</span>
+            <span class="cert-badge">CERT</span>
+          </div>
+          <img src="./assets/images/internship_cert.jpg" alt="Internship Certificate - Infosys Springboard" />
+          <div class="card-overlay">
+            <h4>Virtual Internship</h4>
+            <p>Infosys SpringBoard</p>
+          </div>
+        </article>
 
-      <div class="skills-row">
-        <span class="skills-key">frontend</span>
-        <div class="skills-values">
-          <span class="skill-pill">HTML5</span>
-          <span class="skill-pill">CSS3</span>
-          <span class="skill-pill">React.js</span>
-          <span class="skill-pill">Bootstrap</span>
-          <span class="skill-pill">Tailwind CSS</span>
-        </div>
-      </div>
+        <article class="certificate-card reveal zoom">
+          <div class="cert-tab">
+            <span>web_dev_cert.png</span>
+            <span class="cert-badge">CERT</span>
+          </div>
+          <img src="./assets/images/web_dev_cert.png" alt="Full Stack Web Development Certificate" />
+          <div class="card-overlay">
+            <h4>Full Stack Web Development</h4>
+            <p>Apna College — MERN Stack</p>
+          </div>
+        </article>
 
-      <div class="skills-row">
-        <span class="skills-key">database</span>
-        <div class="skills-values">
-          <span class="skill-pill">MySQL</span>
-          <span class="skill-pill">MongoDB</span>
-        </div>
-      </div>
-
-      <div class="skills-row">
-        <span class="skills-key">tools</span>
-        <div class="skills-values">
-          <span class="skill-pill">Git</span>
-          <span class="skill-pill">GitHub</span>
-          <span class="skill-pill">Postman</span>
-          <span class="skill-pill">VS Code</span>
-        </div>
-      </div>
-
-      <div class="skills-row">
-        <span class="skills-key">soft_skills</span>
-        <div class="skills-values">
-          <span class="skill-pill">Problem-Solving</span>
-          <span class="skill-pill">Collaboration</span>
-          <span class="skill-pill">Communication</span>
-          <span class="skill-pill">Adaptability</span>
-        </div>
+        <article class="certificate-card reveal zoom">
+          <div class="cert-tab">
+            <span>se_cert.jpg</span>
+            <span class="cert-badge">CERT</span>
+          </div>
+          <img src="./assets/images/se_cert.jpg" alt="Software Engineering Certificate" />
+          <div class="card-overlay">
+            <h4>Software Engineering</h4>
+            <p>Infosys SpringBoard</p>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
+</main>
 
-  <!-- Certificates -->
-  <div class="about-block">
-    <span class="about-eyebrow">/* certificates */</span>
-    <h3 class="reveal fade-left">Certificates</h3>
-
-    <div class="certificates-container">
-      <div class="certificate-card reveal zoom">
-        <div class="cert-tab">
-          <span>internship_cert.jpg</span>
-          <span class="cert-badge">CERT</span>
-        </div>
-        <img src="./assets/images/internship_cert.jpg" alt="Internship Certificate - Infosys Springboard" />
-        <div class="card-overlay">
-          <h4>Virtual Internship</h4>
-          <p>Infosys SpringBoard</p>
-        </div>
-      </div>
-
-      <div class="certificate-card reveal zoom">
-        <div class="cert-tab">
-          <span>web_dev_cert.png</span>
-          <span class="cert-badge">CERT</span>
-        </div>
-        <img src="./assets/images/web_dev_cert.png" alt="Full Stack Web Development Certificate" />
-        <div class="card-overlay">
-          <h4>Full Stack Web Development</h4>
-          <p>Apna College — MERN Stack</p>
-        </div>
-      </div>
-
-
-      <div class="certificate-card reveal zoom">
-        <div class="cert-tab">
-          <span>se_cert.jpg</span>
-          <span class="cert-badge">CERT</span>
-        </div>
-        <img src="./assets/images/se_cert.jpg" alt="Software Engineering Certificate" />
-        <div class="card-overlay">
-          <h4>Software Engineering</h4>
-          <p>Infosys SpringBoard</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-------- Footer --------->
+<!-- Footer -->
 <footer class="site-footer">
   <div class="footer-inner">
-
     <div class="footer-info">
       <p class="footer-name">Gaurav Kumar</p>
-      <p class="footer-role">React & Frontend Developer</p>
+      <p class="footer-role">React &amp; Frontend Developer</p>
     </div>
 
     <div class="footer-socials">
-      <a
-        href="https://www.linkedin.com/in/gauravkumar42/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
+      <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
       </a>
-
-      <a
-        href="https://github.com/gauravkumar42"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-      >
+      <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <i class="fa-brands fa-github" aria-hidden="true"></i>
       </a>
-
-      <a
-        href="https://wa.me/919569224572"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-      >
+      <a href="https://wa.me/919569224572" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
       </a>
-
-      <a
-        href="mailto:gauravkumar95692@gmail.com"
-        aria-label="Email"
-      >
+      <a href="mailto:gauravkumar95692@gmail.com" aria-label="Email">
         <i class="fa-solid fa-envelope" aria-hidden="true"></i>
       </a>
     </div>
 
-    <p class="footer-note">
-      © 2026 Gaurav Kumar. Built with React.
-    </p>
-
+    <p class="footer-note">© 2026 Gaurav Kumar. Built with React.</p>
   </div>
 </footer>
 
-<!-- JS -->
 <script src="js/scroll-effects.js"></script>
-<script src="js/cursor.js"></script>
 </body>
 </html>

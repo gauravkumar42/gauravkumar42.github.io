@@ -1,14 +1,10 @@
-/* Shared color + heading styles used across sections */
+/* Aliases so section files can use shorter names; values live in base.css */
 
 :root {
-  --color-ink: #0a2540;                        /* headings, buttons */
-  --color-copy: #3d4752;                       /* body copy */
-  --color-muted: #7a8794;                      /* captions, labels */
-  --color-accent-soft: rgba(26, 168, 201, 0.1);
-  --color-line: rgba(10, 37, 64, 0.08);         /* borders */
-  --color-line-strong: rgba(10, 37, 64, 0.16);
-  --color-surface: #ffffff;
-  /* --color-accent and --color-highlight come from base.css, not redeclared here */
+  --color-ink: var(--color-primary);
+  --color-copy: var(--color-text);
+  --color-muted: var(--color-text-muted);
+  --color-surface: var(--color-bg);
 }
 
 .section-container h2 {
@@ -34,6 +30,18 @@
   color: var(--color-copy);
   line-height: 1.65;
   margin-bottom: 1.2rem;
+}
+
+/* small monospace label used above a heading, in the developer's own voice */
+.eyebrow {
+  display: block;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
 }
 
 @media (max-width: 768px) {

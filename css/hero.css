@@ -21,12 +21,13 @@
 
 .hero-text h3 {
   font-weight: 500;
+  font-size: 1.05rem;
   color: var(--color-accent);
   margin-bottom: 0.5rem;
 }
 
 .hero-text h1 {
-  /* font-family left exactly as-is on request — do not change */
+  /* font-family left as Quicksand on request — do not change */
   font-family: "Quicksand", sans-serif;
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
@@ -44,8 +45,7 @@
   max-width: 46ch;
 }
 
-/* Justify only once there's enough line length (desktop) for it to look
-   intentional rather than ragged. */
+/* justify only once line length (desktop) is long enough to look intentional */
 @media (min-width: 1025px) {
   .hero-text p {
     text-align: justify;
@@ -69,7 +69,6 @@
   transform: scaleX(1);
 }
 
-
 .hero-img {
   flex-shrink: 0;
 }
@@ -80,7 +79,7 @@
   max-width: 100%;
   border-radius: 5%;
   object-fit: cover;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 25px rgba(10, 37, 64, 0.14);
   transition: transform 0.4s ease;
 }
 
@@ -104,7 +103,6 @@
 .hero-socials {
   display: flex;
   gap: 1rem;
-  font-size: 1.25rem;
 }
 
 .hero-socials a {
@@ -116,14 +114,14 @@
   border-radius: 50%;
   background: #fff;
   color: var(--color-primary);
-  font-size: 1.4rem;
-  box-shadow: 0 3px 8px rgba(10, 37, 64, 0.08);
+  font-size: 1.15rem;
+  box-shadow: 0 3px 8px var(--color-line);
   transition: color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .hero-socials a:hover {
   color: var(--color-accent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--color-line-strong);
 }
 
 .hero-socials a:focus-visible,
@@ -136,7 +134,7 @@
 .hero-divider {
   width: 1px;
   height: 28px;
-  background: rgba(10, 37, 64, 0.15);
+  background: var(--color-line-strong);
 }
 
 .resume-btn {
@@ -156,7 +154,6 @@
   filter: brightness(0.95);
 }
 
-
 /* SCROLL CUE */
 
 .scroll-cue {
@@ -168,20 +165,15 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  color: #87a9a8;
+  color: var(--color-text-muted);
   font-size: 0.8rem;
-
   animation: cueBounce 2.2s ease-in-out infinite;
 }
 
 .scroll-cue span {
   width: 1px;
   height: 28px;
-  background: #87a9a8;
-}
-
-.scroll-cue i {
-  font-size: 0.85rem;
+  background: var(--color-text-muted);
 }
 
 @keyframes cueBounce {

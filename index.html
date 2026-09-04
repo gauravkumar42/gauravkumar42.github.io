@@ -1,129 +1,120 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#0A2540" />
-    <meta name="application-name" content="Gaurav Kumar" />
-    <meta name="author" content="Gaurav Kumar" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A2540" />
+  <meta name="application-name" content="Gaurav Kumar" />
+  <meta name="author" content="Gaurav Kumar" />
 
-    <title>Gaurav Kumar — Creative Developer</title>
+  <title>Gaurav Kumar — React Developer</title>
+  <meta
+    name="description"
+    content="Gaurav Kumar is a React.js developer building responsive, accessible web applications. Explore his projects, skills, and background."
+  />
 
-    <meta
-      name="description"
-      content="Portfolio of Gaurav Kumar — React.js developer specializing in modern web development, interactive user interfaces, and full-stack applications."
-    />
+  <link rel="canonical" href="https://gauravkumar42.me/" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://gauravkumar42.me/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gaurav Kumar — React Developer" />
+  <meta
+    property="og:description"
+    content="Gaurav Kumar is a React.js developer building responsive, accessible web applications. Explore his projects, skills, and background."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gauravkumar42.me/" />
+  <meta property="og:image" content="https://gauravkumar42.me/assets/images/og-image.png" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Gaurav Kumar — Creative Developer" />
-    <meta
-      property="og:description"
-      content="Portfolio of Gaurav Kumar — React.js developer specializing in modern web development, interactive user interfaces, and full-stack applications."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gauravkumar42.me" />
-    <meta
-      property="og:image"
-      content="https://gauravkumar42.me/assets/images/og-image.png"
-    />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/icons/favicon-192x192.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="assets/icons/favicon-192x192.png" />
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="site.webmanifest" />
+  <!-- Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections-common.css" />
+  <link rel="stylesheet" href="css/tech-stack.css" />
+  <link rel="stylesheet" href="css/about-teaser.css" />
+  <link rel="stylesheet" href="css/experience.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/contact-cta.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+</head>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link rel="stylesheet" href="css/hero.css" />
-    <link rel="stylesheet" href="css/sections-common.css" />
-    <link rel="stylesheet" href="css/tech-stack.css" />
-    <link rel="stylesheet" href="css/projects.css" />
-    <link rel="stylesheet" href="css/experience.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-  </head>
+<body>
+  <a class="skip-link visually-hidden" href="#main-content">Skip to content</a>
 
-  <body>
+  <div id="scroll-progress"></div>
 
-    <div id="scroll-progress"></div>
+  <div id="header-root"></div>
+  <script src="js/header.js"></script>
 
-    <div id="header-root"></div>
-    <script src="js/header.js"></script>
+  <main id="main-content">
+    <!-- Hero -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h3 class="reveal fade-left">Hello, I'm</h3>
+          <h1 class="reveal fade-left">Gaurav Kumar</h1>
+          <p class="reveal fade-left">
+            A React developer who turns messy problems into clean, fast interfaces.
+            I build responsive, accessible experiences with reusable components
+            and the kind of detail that makes an app feel effortless to use.
+          </p>
 
-  <!-- Hero Section -->
-<section id="hero">
-  <div class="hero-container">
-    <div class="hero-text reveal fade-left">
-      <h3>Hello, I'm</h3>
-      <h1>Gaurav Kumar</h1>
-      <p>
-        A React developer who loves turning messy problems into clean, fast interfaces. <br>
-        I focus on building responsive, accessible experiences with clean architecture,
-        reusable components, and attention to the details that make the web feel effortless.
-      </p>
+          <div class="line reveal"></div>
 
-      <div class="line reveal"></div>
+          <div class="hero-actions reveal fade-left">
+            <div class="hero-socials">
+              <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
 
-      <div class="hero-actions">
-        <div class="hero-socials">
-          <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
+            <span class="hero-divider" aria-hidden="true"></span>
+
+            <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resume-btn">
+              Resume <span class="material-symbols-outlined" aria-hidden="true">arrow_outward</span>
+            </a>
+          </div>
         </div>
 
-        <span class="hero-divider" aria-hidden="true"></span>
-
-        <a href="https://drive.google.com/file/d/18byYl9pS9gqbPGjiSNrPCvd1L-immE8Q/view?usp=drive_link"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="resume-btn">
-
-          Resume <span class="material-symbols-outlined resume-icon" aria-hidden="true">arrow_outward</span>
-        </a>
+        <div class="hero-img">
+          <img class="reveal fade-right" src="./assets/images/hero-image.jpg" alt="Portrait of Gaurav Kumar" />
+        </div>
       </div>
-    </div>
 
-    <div class="hero-img">
-      <img class="reveal fade-right" src="./assets/images/hero-image.jpg" alt="Portrait of Gaurav Kumar" />
-    </div>
-  </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span></span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </section>
 
-  <div class="scroll-cue" aria-hidden="true">
-    <span></span>
-    <i class="fa-solid fa-chevron-down"></i>
-  </div>
-</section>
-
-
-
-    <!-- Tech Stack Strip -->
-    <section id="tech-stack" class="tech-stack-section">
-      <span class="tech-stack-eyebrow reveal">// tech I work with</span>
-      <div class="tech-stack-pills">
+    <!-- Tech stack -->
+    <section id="tech-stack" class="tech-stack-section" aria-labelledby="tech-stack-heading">
+      <h2 id="tech-stack-heading" class="visually-hidden">Tech stack</h2>
+      <span class="eyebrow reveal">// tech I work with</span>
+      <div class="tech-stack-pills" data-reveal-group>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-react"></i> React.js</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-js"></i> JavaScript</span>
         <span class="tech-pill reveal zoom"><i class="fa-brands fa-html5"></i> HTML5</span>
@@ -136,292 +127,180 @@
       </div>
     </section>
 
-
-
-<!-- Experience & Learning Section -->
-<section id="experience" class="section-container">
-  <h2 class="reveal fade-right">Experience &amp; Learning</h2>
-  <div class="experience-container">
-
-    <div class="experience-card reveal zoom">
-      <div class="experience-card-header">
-        <h3>Virtual Internship</h3>
-        <span class="experience-year">2026</span>
-      </div>
-      <span class="experience-org">Infosys Springboard</span>
-      <p>
-        Completed a guided, project-based virtual internship covering
-        software engineering fundamentals and full-stack development
-        practices.
-      </p>
-    </div>
-
-    <div class="experience-card reveal zoom">
-      <div class="experience-card-header">
-        <h3>Full Stack Web Development</h3>
-        <span class="experience-year">2026</span>
-      </div>
-      <span class="experience-org">Apna College — MERN Stack</span>
-      <p>
-        Completed an intensive MERN stack program covering React,
-        Node.js, Express, and MongoDB through hands-on projects.
-      </p>
-    </div>
-
-    <div class="experience-card reveal zoom">
-      <div class="experience-card-header">
-        <h3>Software Engineering Program</h3>
-        <span class="experience-year">2025</span>
-      </div>
-      <span class="experience-org">Infosys Springboard</span>
-      <p>
-        Worked through structured modules on software engineering
-        concepts — SDLC, coding standards, and collaborative development
-        practices.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- Projects Section  -->
-<section id="works" class="section-container">
-  <h2 class="reveal fade-right">Selected Work</h2>
-  <div class="projects-container">
-
-    <div class="project-card reveal zoom">
-      <div class="project-card-header">
-        <span class="project-category">Full-Stack App</span>
-        <div class="project-links">
-          <a href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
-             target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View live demo" title="Live demo">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </div>
-      </div>
-      <div class="project-card-body">
-        <h3>BudgetWise <span>(Apr 2026)</span></h3>
-        <p>
-          A personal finance tracker that turns raw transactions into a clear
-          picture of where money actually goes. Categorized expense logging,
-          interactive spending dashboards, and an AI layer that suggests
-          realistic budget adjustments based on real habits — not generic
-          rules of thumb.
+    <!-- About teaser -->
+    <section id="about-teaser" aria-labelledby="about-teaser-heading">
+      <div class="about-teaser-inner">
+        <h2 id="about-teaser-heading" class="reveal fade-right">A bit about me</h2>
+        <p class="reveal">
+          I'm a recent B.Tech IT Engineering graduate who spends most of my time in React —
+          component architecture, hooks, routing, and the full path from development to a
+          working deployment. Outside the interface, I care about Git workflows, debugging
+          real errors, and handling loading, error, and auth states the way a live app needs them.
         </p>
-        <div class="project-tags">
-          <span>React.js</span>
-          <span>Node.js</span>
-          <span>MongoDB</span>
-          <span>REST APIs</span>
-          <span>AI</span>
-        </div>
+        <a href="about.html" class="about-teaser-link reveal">
+          More about me <span aria-hidden="true">→</span>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="project-card reveal zoom">
-      <div class="project-card-header">
-        <span class="project-category">Browser Game</span>
-        <div class="project-links">
-          <a href="https://gauravkumar42.me/simon-memory-game/"
-             target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View live demo" title="Live demo">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </div>
+    <!-- Experience -->
+    <section id="experience" class="section-container" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="reveal fade-right">Experience &amp; Learning</h2>
+      <div class="experience-container">
+        <article class="experience-card reveal zoom">
+          <div class="experience-card-header">
+            <h3>Virtual Internship</h3>
+            <span class="experience-year">2026</span>
+          </div>
+          <span class="experience-org">Infosys Springboard</span>
+          <p>
+            Completed a guided, project-based virtual internship covering software
+            engineering fundamentals and full-stack development practices.
+          </p>
+        </article>
+
+        <article class="experience-card reveal zoom">
+          <div class="experience-card-header">
+            <h3>Full Stack Web Development</h3>
+            <span class="experience-year">2026</span>
+          </div>
+          <span class="experience-org">Apna College — MERN Stack</span>
+          <p>
+            Completed an intensive MERN stack program covering React, Node.js,
+            Express, and MongoDB through hands-on projects.
+          </p>
+        </article>
+
+        <article class="experience-card reveal zoom">
+          <div class="experience-card-header">
+            <h3>Software Engineering Program</h3>
+            <span class="experience-year">2025</span>
+          </div>
+          <span class="experience-org">Infosys Springboard</span>
+          <p>
+            Worked through structured modules on software engineering concepts —
+            SDLC, coding standards, and collaborative development practices.
+          </p>
+        </article>
       </div>
-      <div class="project-card-body">
-        <h3>Simon Says Game <span>(June 2026)</span></h3>
-        <p>
-          A memory game rebuilt from scratch in vanilla JavaScript, with
-          escalating difficulty, full keyboard controls, and a scoring
-          system that rewards precision under pressure. No frameworks —
-          just DOM manipulation, timing logic, and state handled by hand.
+    </section>
+
+    <!-- Selected projects -->
+    <section id="works" class="section-container" aria-labelledby="works-heading">
+      <h2 id="works-heading" class="reveal fade-right">Selected Work</h2>
+      <div class="projects-container">
+        <article class="project-card reveal zoom">
+          <div class="project-card-header">
+            <span class="project-category">Full-Stack App</span>
+            <div class="project-links">
+              <a href="https://budgetwise-ai-finance-tracker-grdk5f13h-gauravkumar43.vercel.app/"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-icon-link" aria-label="View BudgetWise live demo" title="Live demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                 class="project-icon-link" aria-label="View BudgetWise source on GitHub" title="Source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>BudgetWise <span>(Apr 2026)</span></h3>
+            <p>
+              A personal finance tracker that turns raw transactions into a clear picture
+              of where money actually goes, with an AI layer that suggests realistic
+              budget adjustments based on real habits.
+            </p>
+            <div class="project-tags">
+              <span>React.js</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+              <span>AI</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal zoom">
+          <div class="project-card-header">
+            <span class="project-category">Browser Game</span>
+            <div class="project-links">
+              <a href="https://gauravkumar42.me/simon-memory-game/"
+                 target="_blank" rel="noopener noreferrer"
+                 class="project-icon-link" aria-label="View Simon Says Game live demo" title="Live demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                 class="project-icon-link" aria-label="View Simon Says Game source on GitHub" title="Source code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Simon Says Game <span>(June 2026)</span></h3>
+            <p>
+              A memory game rebuilt from scratch in vanilla JavaScript, with escalating
+              difficulty, keyboard controls, and a scoring system — no frameworks,
+              just DOM manipulation and timing logic handled by hand.
+            </p>
+            <div class="project-tags">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="view-all-wrap">
+        <a href="work.html" class="view-all-btn reveal">
+          View all projects <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact-cta" aria-labelledby="contact-cta-heading">
+      <div class="contact-cta-inner">
+        <span class="eyebrow reveal">// let's talk</span>
+        <h2 id="contact-cta-heading" class="reveal">Have a project in mind?</h2>
+        <p class="reveal">
+          I'm open to new opportunities, collaborations, or just a good conversation
+          about tech. Send me a message and I'll get back to you.
         </p>
-        <div class="project-tags">
-          <span>HTML5</span>
-          <span>CSS3</span>
-          <span>JavaScript</span>
-          <span>Game Logic</span>
-        </div>
+        <a href="contact.html" class="contact-cta-btn reveal">
+          Get in touch <span aria-hidden="true">→</span>
+        </a>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="project-card reveal zoom">
-      <div class="project-card-header">
-        <span class="project-category">Personal Site</span>
-        <div class="project-links">
-          <a href="https://gauravkumar42.me/"
-             target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View live demo" title="Live demo">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer"
-             class="project-icon-link" aria-label="View source on GitHub" title="Source code">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </div>
-      </div>
-      <div class="project-card-body">
-        <h3>Personal Portfolio Website <span>(Feb 2026)</span></h3>
-        <p>
-          The site you're on. Built on a hand-written HTML/CSS/JS foundation
-          with scroll-triggered reveals, and a working contact form wired to
-          a Node.js + MySQL backend — an actual message pipeline, not a
-          static mockup.
-        </p>
-        <div class="project-tags">
-          <span>HTML5</span>
-          <span>CSS3</span>
-          <span>JavaScript</span>
-          <span>Node.js</span>
-          <span>MySQL</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- Contact Section -->
-<section id="contact" class="contact-section reveal">
-  <span class="contact-eyebrow reveal">// let's talk</span>
-  <h2 class="reveal fade-right">Contact me</h2>
-
-  <div class="contact-panel reveal zoom">
-    <div class="form-container">
-      <!-- Left Info -->
-      <div class="contact-info reveal fade-left">
-        <p>
-          I'm always open to new opportunities, collaborations, or a good
-          conversation about tech. Drop me a message through the form or
-          reach out using the contact options below.
-        </p>
-
-        <div class="contact-links">
-          <a href="https://wa.me/919569224572"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-link reveal fade-left">
-
-            <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
-            <span class="contact-text">
-              Text on WhatsApp
-              <span class="contact-detail">+91 95692 24572</span>
-            </span>
-          </a>
-
-          <a href="mailto:gauravkumar95692@gmail.com" class="contact-link reveal fade-left">
-            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-            <span class="contact-text">
-              or just send me an email
-              <span class="contact-detail">gauravkumar95692@gmail.com</span>
-            </span>
-          </a>
-        </div>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <p class="footer-name">Gaurav Kumar</p>
+        <p class="footer-role">React &amp; Frontend Developer</p>
       </div>
 
-      <!-- Right Form — id, name attributes, and structure all unchanged -->
-      <form id="contact-form" class="reveal fade-right">
-        <div class="form-group">
-          <input type="text" id="name" name="name" placeholder=" " required />
-          <label for="name">Name<span class="required-star">*</span></label>
-        </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/gauravkumar42/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/gauravkumar42" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/919569224572" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:gauravkumar95692@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
 
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder=" " required />
-          <label for="email">Email<span class="required-star">*</span></label>
-        </div>
-
-        <div class="form-group">
-          <textarea id="message" name="message" placeholder=" " maxlength="150"></textarea>
-          <label for="message">Message</label>
-        </div>
-
-        <div class="form-checkbox">
-          <input type="checkbox" id="agree" name="agree" />
-          <label for="agree">I agree to be contacted about my message.</label>
-        </div>
-
-        <button type="submit" class="btn-submit">
-          <span>Send Message</span>
-          <i class="fas fa-arrow-right btn-arrow" aria-hidden="true"></i>
-        </button>
-        <p id="form-status"></p>
-      </form>
+      <p class="footer-note">© 2026 Gaurav Kumar. Built with React.</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-
-
-<!-------- Footer --------->
-<footer class="site-footer">
-  <div class="footer-inner">
-
-    <div class="footer-info">
-      <p class="footer-name">Gaurav Kumar</p>
-      <p class="footer-role">React & Frontend Developer</p>
-    </div>
-
-    <div class="footer-socials">
-      <a
-        href="https://www.linkedin.com/in/gauravkumar42/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
-        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-      </a>
-
-      <a
-        href="https://github.com/gauravkumar42"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-      >
-        <i class="fa-brands fa-github" aria-hidden="true"></i>
-      </a>
-
-      <a
-        href="https://wa.me/919569224572"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-      >
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-      </a>
-
-      <a
-        href="mailto:gauravkumar95692@gmail.com"
-        aria-label="Email"
-      >
-        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-      </a>
-    </div>
-
-    <p class="footer-note">
-      © 2026 Gaurav Kumar. Built with React.
-    </p>
-
-  </div>
-</footer>
-
-
-    <!-- JS -->
-    <script src="js/scroll-effects.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/contact.js"></script>
-  </body>
+  <script src="js/scroll-effects.js"></script>
+</body>
 </html>

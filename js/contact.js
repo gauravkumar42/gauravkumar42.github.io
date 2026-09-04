@@ -1,19 +1,17 @@
 // ------ CONTACT FORM ------
-// Only runs on pages that actually have #contact-form. Previously this was
-// unguarded in app.js, so if app.js were ever included on a page without
-// the form, `form.addEventListener(...)` would throw and silently kill
-// every other script on the page. Guarding it removes that landmine.
+// Only runs on pages that have #contact-form, guarded so a missing form
+// can't throw and silently kill other scripts on the page.
 
 (() => {
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
 
   if (!form) return;
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    status.textContent = "Sending...";
+    status.textContent = 'Sending...';
 
     const formData = {
       name: form.name.value.trim(),
@@ -23,11 +21,11 @@
 
     try {
       const response = await fetch(
-        "https://gauravkumar42githubio-production.up.railway.app/api/contact",
+        'https://gauravkumar42githubio-production.up.railway.app/api/contact',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
         }
@@ -36,14 +34,14 @@
       const data = await response.json();
 
       if (response.ok) {
-        status.textContent = "✅ Message sent successfully!";
+        status.textContent = '✅ Message sent successfully!';
         form.reset();
       } else {
         status.textContent = `❌ ${data.message}`;
       }
     } catch (error) {
-      console.error("Error:", error);
-      status.textContent = "⚠️ Error sending message.";
+      console.error('Error:', error);
+      status.textContent = '⚠️ Error sending message.';
     }
   });
 })();

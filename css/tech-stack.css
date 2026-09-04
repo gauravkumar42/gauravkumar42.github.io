@@ -2,15 +2,12 @@
 
 .tech-stack-section {
   background: var(--color-bg-soft);
-  border-top: 1px solid var(--color-line, rgba(10, 37, 64, 0.08));
-  padding: 1.5rem 1.5rem 2.5rem;
+  border-top: 1px solid var(--color-line);
+  padding: 1.75rem 1.5rem 2.75rem;
   text-align: center;
 }
 
-.tech-stack-eyebrow {
-  display: block;
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
-  color: var(--color-accent);
+.tech-stack-section .eyebrow {
   margin-bottom: 1.25rem;
 }
 
@@ -30,17 +27,17 @@
   font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--color-line-strong, rgba(10, 37, 64, 0.16));
-  transition: border-color 0.2s ease;
+  border: 1px solid var(--color-line-strong);
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .tech-pill:hover {
   border-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
-/* NOTE: Font Awesome brand icons (React, JS, Node, etc.) render in their
-   real brand colors and ignore `color` — this rule is a harmless fallback
-   for any monochrome icon set, not something actively controlling color. */
+/* Font Awesome brand icons render in their own brand colors and ignore
+   this — it's just a fallback for any monochrome icon */
 .tech-pill i {
   font-size: 1rem;
   color: var(--color-accent);
@@ -48,7 +45,7 @@
 
 @media (max-width: 480px) {
   .tech-stack-section {
-    padding: 1.25rem 1rem 2rem;
+    padding: 1.5rem 1rem 2.25rem;
   }
   .tech-pill {
     font-size: 0.8rem;

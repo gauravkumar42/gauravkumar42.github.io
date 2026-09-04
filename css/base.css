@@ -1,33 +1,29 @@
 /* ---------- DESIGN TOKENS ---------- */
-/*
-  Single source of truth for color. Previously index.html's sections (hero,
-  navbar, tech-stack) used a blue/cyan/lime palette while about.html defined
-  its own separate navy/cyan/amber palette locally — the two pages looked
-  like different sites. Unified here on the navy/cyan/amber system (it read
-  as the more considered of the two), so every page now shares one palette.
-*/
+/* One palette for the whole site: navy for ink, cyan as the single accent, */
+/* plus neutral grays. No third color — shades of these two do the rest. */
 
 :root {
   /* Colors */
-  --color-primary: #0a2540;      /* deep navy — headings, ink */
-  --color-accent: #1aa8c9;       /* cyan — links, focus, active states */
-  --color-highlight: #e2894f;    /* warm amber — used sparingly (selection, one-off accents) */
+  --color-primary: #0a2540;      /* navy — headings, ink, buttons */
+  --color-accent: #1aa8c9;       /* cyan — the one accent color */
+  --color-accent-soft: rgba(26, 168, 201, 0.1);
+  --color-accent-strong: #0f88a6; /* darker cyan for hover/pressed states */
   --color-text: #1c2b36;
   --color-text-muted: #5b6b76;
   --color-bg: #ffffff;
-  --color-bg-soft: #f3f6f8;
+  --color-bg-soft: #f4f6f8;
+  --color-line: rgba(10, 37, 64, 0.08);
+  --color-line-strong: rgba(10, 37, 64, 0.16);
+  --color-surface: #ffffff;
 
-  /* Cursor */
-  --cursor-ring-size: 34px;
-
-  /* Typography */
+  /* Typography — unchanged families, only sizes/weights are tuned per section */
   --font-main: "Poppins", "Montserrat", sans-serif;
   --font-heading: "Quicksand", sans-serif;
 
-  /* Motion — kept short and few; this site favors stillness over motion */
+  /* Motion */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
-  --transition-slow: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ---------- BASE / RESET ---------- */
@@ -43,7 +39,6 @@ html {
   scroll-behavior: smooth;
   background: var(--color-bg);
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 
 body {
@@ -53,7 +48,6 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-y: none;
 }
 
 a {
@@ -105,13 +99,38 @@ h6 {
 }
 
 ::selection {
-  background: var(--color-highlight);
+  background: var(--color-accent);
   color: #fff;
 }
 
+/* ---------- ACCESSIBILITY UTILITIES ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: auto;
+  height: auto;
+  clip: auto;
+  z-index: 2000;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
 /* ---------- SCROLL PROGRESS BAR ---------- */
-/* A single thin line that fills with scroll position — the site's one
-   "mouse scroll effect": quiet and functional, not a gimmick. */
+/* thin fixed line that fills with scroll position */
 
 #scroll-progress {
   position: fixed;
@@ -124,67 +143,8 @@ h6 {
   transition: width 0.1s linear;
 }
 
-@media (max-width: 1024px) {
-  /* top navbar is hidden on mobile/tablet in favor of the bottom tab bar,
-     so the progress line moves to the very top edge of the viewport
-     instead of sitting under a header that no longer exists */
-  #scroll-progress {
-    top: 0;
-  }
-}
-
-/* ---------- CUSTOM CURSOR ---------- */
-/* Desktop + fine-pointer only: a small dot that tracks the pointer exactly,
-   plus a soft ring that eases toward it. Both grow slightly over links and
-   buttons. Falls back to the native cursor on touch devices and for anyone
-   who prefers reduced motion. */
-
-@media (hover: hover) and (pointer: fine) {
-  /* Several components (certificate cards, checkboxes, etc.) set their own
-     explicit `cursor: pointer`, which would otherwise override a plain
-     `cursor: none` on <body>. The universal selector here beats those. */
-  body.has-custom-cursor * {
-    cursor: none !important;
-  }
-
-  .cursor-dot,
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    border-radius: 50%;
-    transform: translate3d(-50%, -50%, 0);
-  }
-
-  .cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--color-accent);
-  }
-
-  .cursor-ring {
-    width: var(--cursor-ring-size);
-    height: var(--cursor-ring-size);
-    border: 1px solid rgba(26, 168, 201, 0.45);
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  .cursor-ring.is-active {
-    width: calc(var(--cursor-ring-size) + 16px);
-    height: calc(var(--cursor-ring-size) + 16px);
-    border-color: var(--color-accent);
-  }
-
-  .cursor-ring.is-hidden,
-  .cursor-dot.is-hidden {
-    opacity: 0;
-  }
-}
-
-/* SCROLL REVEAL ANIMATIONS (used across every section) */
+/* ---------- SCROLL REVEAL ANIMATIONS ---------- */
+/* driven by IntersectionObserver in js/scroll-effects.js */
 
 .reveal {
   opacity: 0;
@@ -212,10 +172,15 @@ h6 {
 }
 
 .reveal.zoom {
-  transform: scale(0.92);
+  transform: scale(0.94);
 }
 .reveal.zoom.active {
   transform: scale(1);
+}
+
+/* stagger children inside a revealed group via inline --delay */
+.reveal[style*="--delay"] {
+  transition-delay: var(--delay);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -231,14 +196,5 @@ h6 {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
-  }
-
-  .cursor-dot,
-  .cursor-ring {
-    display: none !important;
-  }
-
-  body.has-custom-cursor * {
-    cursor: auto !important;
   }
 }
