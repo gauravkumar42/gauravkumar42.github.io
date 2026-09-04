@@ -4,7 +4,9 @@
   --color-ink: var(--color-primary);
   --color-copy: var(--color-text);
   --color-muted: var(--color-text-muted);
-  --color-surface: var(--color-bg);
+  /* --color-surface is already defined independently in base.css —
+     it isn't aliased here so it can diverge from --color-bg later
+     (e.g. for a future theme) without recoloring every card/panel. */
 }
 
 .section-container h2 {
